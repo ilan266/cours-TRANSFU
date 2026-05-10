@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Fiche de révision interactive sur la transfusion sanguine - UE 4.4 S4">
+<title>Transfusion S4 — Fiche de révision interactive</title>
+<style>
+  :root {
+    --primary: #C2185B;
+    --primary-dark: #880E4F;
+    --primary-light: #FCE4EC;
+    --blue: #1565C0;
+    --blue-light: #E3F2FD;
+    --green: #2E7D32;
+    --green-light: #E8F5E9;
+    --orange: #E65100;
+    --orange-light: #FFF3E0;
+    --red: #C62828;
+    --red-light: #FFEBEE;
+    --bg: #FAFAFA;
+    --card: #FFFFFF;
+    --text: #212121;
+    --text-soft: #616161;
+    --text-mute: #9E9E9E;
+    --border: #E0E0E0;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 24px rgba(0,0,0,0.10);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  [data-theme="dark"] {
+    --primary: #F48FB1;
+    --primary-dark: #F06292;
+    --primary-light: #4A1B2F;
+    --blue: #64B5F6;
+    --blue-light: #1A2B3D;
+    --green: #81C784;
+    --green-light: #1B2E1D;
+    --orange: #FFB74D;
+    --orange-light: #3D2914;
+    --red: #E57373;
+    --red-light: #3D1F1F;
+    --bg: #121212;
+    --card: #1E1E1E;
+    --text: #E0E0E0;
+    --text-soft: #B0B0B0;
+    --text-mute: #757575;
+    --border: #333333;
+    --shadow: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-lg: 0 4px 24px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+  }
+
+  /* ========== HEADER ========== */
+  header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 24px 20px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 400px; height: 400px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.9;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .icon-btn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  .icon-btn:hover { background: rgba(255,255,255,0.25); }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+    opacity: 0.95;
+    margin-bottom: 4px;
+  }
+
+  .meta {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  /* ========== NAVIGATION ========== */
+  nav {
+    background: var(--card);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-top: -40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: 860px;
+  }
+
+  @media (min-width: 940px) {
+    nav { margin-left: auto; margin-right: auto; }
+  }
+
+  .nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-tabs::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    flex: 1;
+    min-width: max-content;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-soft);
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  .nav-tab:hover {
+    color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  .nav-tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  .nav-tab .badge {
+    background: var(--primary);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    margin-left: 6px;
+    font-weight: 600;
+  }
+
+  /* ========== MAIN ========== */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+  }
+
+  .section { display: none; animation: fadeIn 0.3s ease; }
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========== TYPOGRAPHY ========== */
+  h2 {
+    font-size: 24px;
+    color: var(--primary);
+    margin: 32px 0 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--primary-light);
+    font-weight: 700;
+  }
+
+  h2:first-child { margin-top: 0; }
+
+  h3 {
+    font-size: 19px;
+    color: var(--blue);
+    margin: 24px 0 12px;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 16px;
+    color: var(--primary-dark);
+    margin: 16px 0 8px;
+    font-weight: 600;
+  }
+
+  p { margin: 12px 0; color: var(--text); }
+
+  ul, ol { margin: 12px 0 12px 24px; }
+  li { margin: 6px 0; }
+
+  strong { color: var(--primary-dark); font-weight: 600; }
+  em { color: var(--text-soft); }
+
+  /* ========== BOXES ========== */
+  .box {
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    margin: 16px 0;
+    border-left: 4px solid;
+  }
+
+  .box-key {
+    background: var(--primary-light);
+    border-color: var(--primary);
+  }
+  .box-key strong { color: var(--primary-dark); }
+
+  .box-info {
+    background: var(--blue-light);
+    border-color: var(--blue);
+  }
+  .box-info strong { color: var(--blue); }
+
+  .box-warn {
+    background: var(--orange-light);
+    border-color: var(--orange);
+  }
+  .box-warn strong { color: var(--orange); }
+
+  .box-danger {
+    background: var(--red-light);
+    border-color: var(--red);
+  }
+  .box-danger strong { color: var(--red); }
+
+  .box-success {
+    background: var(--green-light);
+    border-color: var(--green);
+  }
+  .box-success strong { color: var(--green); }
+
+  .box-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 17px;
+  }
+
+  /* ========== TABLES ========== */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    font-size: 14px;
+  }
+
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 12px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: var(--bg); }
+
+  td:first-child { font-weight: 500; }
+
+  /* ========== QUIZ ========== */
+  .quiz-intro {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .quiz-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .stat {
+    background: var(--bg);
+    padding: 12px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .quiz-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+  }
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover {
+    background: var(--bg);
+  }
+
+  .btn-danger {
+    background: var(--red);
+    color: white;
+  }
+  .btn-danger:hover {
+    background: #B71C1C;
+  }
+
+  .question {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    margin: 16px 0;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s;
+  }
+
+  .question:hover {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .q-num {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .q-text {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .options { list-style: none; margin: 0; padding: 0; }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    margin: 6px 0;
+    background: var(--bg);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .option:hover {
+    border-color: var(--border);
+    background: var(--primary-light);
+  }
+
+  .option input {
+    margin-top: 3px;
+    cursor: pointer;
+    accent-color: var(--primary);
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .option label {
+    cursor: pointer;
+    flex: 1;
+    font-size: 15px;
+  }
+
+  .option.selected {
+    border-color: var(--primary);
+    background: var(--primary-light);
+  }
+
+  /* États après validation */
+  .question.validated .option { cursor: default; pointer-events: none; }
+  .question.validated .option input { pointer-events: none; }
+
+  .option.correct-answer {
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+  .option.correct-answer label::after {
+    content: ' ✓';
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .option.wrong-selected {
+    border-color: var(--red);
+    background: var(--red-light);
+  }
+  .option.wrong-selected label::after {
+    content: ' ✗';
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .question-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .check-btn {
+    background: var(--blue);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+  }
+
+  .check-btn:hover { background: #0D47A1; }
+  .check-btn:disabled { background: var(--text-mute); cursor: not-allowed; }
+
+  .result-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .result-badge.correct {
+    background: var(--green-light);
+    color: var(--green);
+  }
+
+  .result-badge.partial {
+    background: var(--orange-light);
+    color: var(--orange);
+  }
+
+  .result-badge.wrong {
+    background: var(--red-light);
+    color: var(--red);
+  }
+
+  .explanation {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+  }
+
+  .explanation strong { color: var(--blue); }
+
+  /* ========== CASE CONCRET BANNER ========== */
+  .case-banner {
+    background: var(--blue-light);
+    padding: 20px;
+    border-radius: var(--radius);
+    margin: 24px 0 16px;
+    border-left: 4px solid var(--blue);
+  }
+
+  .case-banner strong { color: var(--blue); }
+
+  /* ========== PROGRESS ========== */
+  .progress-section {
+    background: var(--card);
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    transition: width 0.4s;
+    border-radius: 4px;
+  }
+
+  .progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-soft);
+  }
+
+  /* ========== MEMO TAGS ========== */
+  .memo-list { list-style: none; margin: 0; padding: 0; }
+
+  .memo-list li {
+    padding: 12px 16px;
+    background: var(--card);
+    margin: 8px 0;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+
+  .tag-abo { background: #FCE4EC; color: #C2185B; }
+  .tag-rh { background: #E3F2FD; color: #1565C0; }
+  .tag-exam { background: #E8F5E9; color: #2E7D32; }
+  .tag-secu { background: #FFF3E0; color: #E65100; }
+  .tag-surv { background: #F3E5F5; color: #7B1FA2; }
+  .tag-acc { background: #FFEBEE; color: #C62828; }
+  .tag-doss { background: #E0F2F1; color: #00695C; }
+
+  [data-theme="dark"] .tag-abo { background: #4A1B2F; color: #F48FB1; }
+  [data-theme="dark"] .tag-rh { background: #1A2B3D; color: #64B5F6; }
+  [data-theme="dark"] .tag-exam { background: #1B2E1D; color: #81C784; }
+  [data-theme="dark"] .tag-secu { background: #3D2914; color: #FFB74D; }
+  [data-theme="dark"] .tag-surv { background: #2D1B3D; color: #CE93D8; }
+  [data-theme="dark"] .tag-acc { background: #3D1F1F; color: #E57373; }
+  [data-theme="dark"] .tag-doss { background: #1B2D2A; color: #4DB6AC; }
+
+  /* ========== CONTENTS / TOC ========== */
+  .toc {
+    background: var(--card);
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    margin: 16px 0 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .toc h3 {
+    margin-top: 0;
+    color: var(--primary);
+  }
+
+  .toc ol { margin: 12px 0 0 24px; }
+  .toc li { margin: 6px 0; color: var(--text-soft); }
+
+  /* ========== MOBILE ========== */
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .subtitle { font-size: 16px; }
+    h2 { font-size: 20px; }
+    h3 { font-size: 17px; }
+    main { padding: 16px 14px 32px; }
+    nav { margin-left: 14px; margin-right: 14px; }
+    .nav-tab { padding: 14px 14px; font-size: 13px; }
+    .quiz-stats { grid-template-columns: 1fr 1fr; }
+    .question { padding: 16px; }
+  }
+
+  /* ========== TOAST ========== */
+  .toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--text);
+    color: var(--card);
+    padding: 12px 24px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.3s;
+    z-index: 1000;
+    pointer-events: none;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ========== FOOTER ========== */
+  footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-soft);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+
+  /* Print */
+  @media print {
+    nav, .icon-btn, .quiz-actions, .question-actions, footer { display: none !important; }
+    .section { display: block !important; }
+    body { background: white; color: black; }
+    header { background: white; color: black; }
+  }
+</style>
+</head>
+<body data-theme="light">
+
+<header>
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="logo">UE 4.4 · S4</div>
+      <div class="header-actions">
+        <button class="icon-btn" id="resetBtn" title="Réinitialiser le quiz">↻</button>
+        <button class="icon-btn" id="themeBtn" title="Mode sombre">🌙</button>
+      </div>
+    </div>
+    <h1>La transfusion sanguine</h1>
+    <div class="subtitle">Fiche de révision interactive</div>
+    <div class="meta">Compétence 4 · Soins infirmiers · Semestre 4</div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-tabs">
+    <button class="nav-tab active" data-section="cours">📚 Le cours</button>
+    <button class="nav-tab" data-section="partiel">📝 Quiz partiel<span class="badge">40</span></button>
+    <button class="nav-tab" data-section="suppl">✨ Quiz bonus<span class="badge">15</span></button>
+    <button class="nav-tab" data-section="memo">⭐ Mémo</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ COURS ============ -->
+<section id="cours" class="section active">
+
+<div class="toc">
+  <h3>Sommaire du cours</h3>
+  <ol>
+    <li>Notions fondamentales (antigènes, anticorps, ABO, Rhésus)</li>
+    <li>Règles de compatibilité (CGR et plasma)</li>
+    <li>Examens biologiques avant transfusion</li>
+    <li>Sécurité transfusionnelle (urgences, CUPT)</li>
+    <li>Conduite à tenir : avant, pendant, après</li>
+    <li>Accidents transfusionnels</li>
+    <li>Dossier transfusionnel</li>
+  </ol>
+</div>
+
+<h2>1. Notions fondamentales</h2>
+
+<h3>1.1 Antigènes et anticorps : où sont-ils ?</h3>
+<p>La transfusion repose sur la rencontre — voulue ou non — entre des antigènes et des anticorps. Pour transfuser sans risque, il faut savoir où se trouve quoi.</p>
+
+<div class="box box-key">
+  <div class="box-title">À retenir absolument</div>
+  <ul>
+    <li><strong>Antigènes</strong> → situés sur la <strong>membrane des hématies</strong> (globules rouges).</li>
+    <li><strong>Anticorps</strong> → situés <strong>dans le plasma</strong>.</li>
+  </ul>
+  <p>C'est cette répartition qui explique toutes les règles de compatibilité.</p>
+</div>
+
+<p>Lorsqu'un anticorps rencontre l'antigène qui lui correspond, il provoque l'agglutination des globules rouges : c'est une <strong>réaction positive</strong>. C'est exactement ce que l'on cherche à voir (ou à ne pas voir) sur les cartes de contrôle ultime pré-transfusionnel.</p>
+
+<h3>1.2 Le système ABO</h3>
+<p>Le système ABO repose sur la présence ou l'absence de deux antigènes (A et B) sur les hématies. À chaque antigène absent correspond un anticorps naturel régulier dans le plasma.</p>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Groupe</th><th>Antigènes (hématies)</th><th>Anticorps (plasma)</th><th>Fréquence</th></tr></thead>
+<tbody>
+<tr><td>A</td><td>A</td><td>anti-B</td><td>≈ 45 %</td></tr>
+<tr><td>B</td><td>B</td><td>anti-A</td><td>≈ 9 %</td></tr>
+<tr><td>AB</td><td>A et B</td><td>aucun</td><td>≈ 3 %</td></tr>
+<tr><td>O</td><td>aucun</td><td>anti-A et anti-B</td><td>≈ 43 %</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="box box-key">
+  <div class="box-title">Règle des anticorps naturels réguliers</div>
+  <p>Les anticorps naturels réguliers correspondent toujours aux <strong>antigènes absents</strong> sur les hématies du sujet.</p>
+  <ul>
+    <li>Sujet A → possède antigène A → développe anti-B (contre l'antigène qu'il n'a pas).</li>
+    <li>Sujet AB → possède A et B → <strong>aucun anticorps</strong> (receveur universel CGR).</li>
+    <li>Sujet O → aucun antigène → développe anti-A <em>et</em> anti-B (donneur universel CGR).</li>
+  </ul>
+</div>
+
+<h3>1.3 Le système Rhésus</h3>
+<p>Le système Rhésus permet notamment d'identifier la présence de l'<strong>antigène D</strong> sur les hématies.</p>
+
+<div class="box box-info">
+  <ul>
+    <li><strong>Rhésus positif (Rh+ / D+)</strong> : présence de l'antigène D.</li>
+    <li><strong>Rhésus négatif (Rh- / D-)</strong> : absence de l'antigène D.</li>
+  </ul>
+  <p>Contrairement au système ABO, il n'existe <strong>pas d'anticorps anti-D naturels</strong>. Les anti-D sont irréguliers : ils apparaissent après une exposition à l'antigène D (transfusion, grossesse Rh- avec fœtus Rh+).</p>
+  <p>Le phénotype Rhésus complet inclut aussi les antigènes <strong>C, c, E, e</strong> (Rhésus étendu) et l'antigène <strong>K</strong> (système Kell).</p>
+</div>
+
+<h2>2. Les règles de compatibilité</h2>
+
+<h3>2.1 Compatibilité ABO pour les CGR</h3>
+<p>Le CGR contient surtout des hématies (donc des antigènes). On doit éviter d'apporter au receveur un antigène contre lequel il possède un anticorps.</p>
+
+<div class="box box-key">
+  <div class="box-title">Règle d'or pour les CGR</div>
+  <p>Les antigènes de la poche ne doivent pas rencontrer les anticorps du receveur.</p>
+  <ul>
+    <li><strong>Donneur universel CGR</strong> : groupe O (aucun antigène à apporter).</li>
+    <li><strong>Receveur universel CGR</strong> : groupe AB (aucun anticorps).</li>
+  </ul>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Receveur ↓ / Donneur →</th><th>O</th><th>A</th><th>B</th><th>AB</th></tr></thead>
+<tbody>
+<tr><td>O</td><td>✓</td><td>✗</td><td>✗</td><td>✗</td></tr>
+<tr><td>A</td><td>✓</td><td>✓</td><td>✗</td><td>✗</td></tr>
+<tr><td>B</td><td>✓</td><td>✗</td><td>✓</td><td>✗</td></tr>
+<tr><td>AB</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="box box-info">
+  <div class="box-title">Et le Rhésus ?</div>
+  <ul>
+    <li><strong>Patient Rh-</strong> : ne peut recevoir <strong>que du sang Rh-</strong> (risque d'immunisation anti-D).</li>
+    <li><strong>Patient Rh+</strong> : peut recevoir du sang Rh+ ou Rh-.</li>
+  </ul>
+</div>
+
+<h3>2.2 Compatibilité ABO pour le plasma</h3>
+<p>Pour le plasma, c'est <strong>l'inverse des CGR</strong>. Le plasma véhicule des anticorps. On doit éviter d'apporter au receveur des anticorps dirigés contre ses propres antigènes.</p>
+
+<div class="box box-key">
+  <div class="box-title">Règle d'or pour le plasma</div>
+  <ul>
+    <li><strong>Donneur universel plasma</strong> : groupe AB (aucun anticorps).</li>
+    <li><strong>Receveur universel plasma</strong> : groupe O (aucun antigène).</li>
+    <li><strong>En urgence sans groupage</strong> : on transfuse du <strong>plasma AB</strong>.</li>
+  </ul>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Receveur ↓ / Plasma →</th><th>O</th><th>A</th><th>B</th><th>AB</th></tr></thead>
+<tbody>
+<tr><td>O</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>A</td><td>✗</td><td>✓</td><td>✗</td><td>✓</td></tr>
+<tr><td>B</td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr>
+<tr><td>AB</td><td>✗</td><td>✗</td><td>✗</td><td>✓</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>3. Les examens biologiques avant transfusion</h2>
+
+<h3>3.1 Le groupage sanguin (2 déterminations)</h3>
+<ul>
+  <li><strong>2 déterminations obligatoires</strong> : sur 2 prélèvements distincts, à 2 moments différents, par 2 préleveurs différents si possible.</li>
+  <li><strong>En pratique seul(e)</strong> : on prélève une 1ʳᵉ détermination, on l'envoie au laboratoire, puis dans un second temps on prélève la 2ᵉ.</li>
+  <li><strong>Pourquoi ?</strong> Sécurité maximale d'identification du groupe pour éviter toute erreur.</li>
+  <li><strong>Phénotypage</strong> : antigènes Rhésus étendus (C, c, E, e) et Kell (K). Indispensable pour les patients polytransfusés et les femmes en âge de procréer.</li>
+</ul>
+
+<h3>3.2 La RAI — Recherche d'anticorps irréguliers</h3>
+<div class="box box-warn">
+  <ul>
+    <li><strong>Définition</strong> : détection des anticorps anti-érythrocytaires irréguliers (apparus suite à une grossesse, transfusion antérieure, etc.).</li>
+    <li><strong>Validité</strong> : <strong>moins de 72 heures</strong> avant la transfusion.</li>
+    <li><strong>But</strong> : éviter un accident hémolytique par incompatibilité due à un anticorps irrégulier.</li>
+    <li><strong>Urgence vitale</strong> : il n'est pas obligatoire d'attendre les résultats de la RAI.</li>
+  </ul>
+</div>
+
+<h2>4. La sécurité transfusionnelle</h2>
+<p>Le principe vise à prévenir le <strong>risque hémolytique</strong> (destruction des hématies par incompatibilité immunologique). Elle ne supprime pas tous les autres risques (infectieux, allergique, surcharge), mais c'est sa cible principale.</p>
+
+<h3>4.1 Les niveaux d'urgence transfusionnelle</h3>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Niveau</th><th>Délai PSL</th><th>Examens</th><th>CUPT</th></tr></thead>
+<tbody>
+<tr><td>Urgence vitale</td><td>&lt; 30 min</td><td>RAI non attendue</td><td>obligatoire</td></tr>
+<tr><td>Urgence relative</td><td>2 à 3 h</td><td>réalisés <em>et</em> attendus</td><td>obligatoire</td></tr>
+<tr><td>Programmée</td><td>habituel</td><td>tous les examens</td><td>obligatoire</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="box box-danger">
+  <div class="box-title">Le CUPT est toujours obligatoire</div>
+  <p>Le contrôle ultime pré-transfusionnel est obligatoire <strong>quelles que soient les circonstances</strong>, y compris en urgence vitale. Il ne peut jamais être réalisé après la transfusion : c'est le dernier rempart de sécurité.</p>
+</div>
+
+<h3>4.2 Le contrôle ultime pré-transfusionnel (CUPT)</h3>
+<ul>
+  <li><strong>But</strong> : permettre à l'IDE de s'assurer de la compatibilité ABO entre receveur et poche, au lit du patient, juste avant transfusion.</li>
+  <li><strong>Prévient</strong> : les accidents par incompatibilité ABO lors des transfusions de globules rouges.</li>
+  <li><strong>Ne prévient pas</strong> : les incompatibilités dues aux anticorps irréguliers (rôle de la RAI).</li>
+  <li><strong>Porte sur</strong> : les CGR uniquement (pas le plasma, pas les plaquettes).</li>
+  <li><strong>Réalisé par</strong> : 1 IDE, au lit du patient, avant chaque CGR.</li>
+</ul>
+
+<div class="box box-info">
+  <div class="box-title">Lecture d'une carte ABTest®</div>
+  <ul>
+    <li><strong>Réactif anti-A</strong> : agglutination (rouge) = présence de l'antigène A.</li>
+    <li><strong>Réactif anti-B</strong> : agglutination (rouge) = présence de l'antigène B.</li>
+  </ul>
+  <p>On dépose le sang du patient en haut et le sang de la poche en bas. On lit le groupe pour les deux, puis on conclut sur la compatibilité.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead><tr><th>Lecture</th><th>Anti-A</th><th>Anti-B</th><th>Groupe</th></tr></thead>
+<tbody>
+<tr><td>Aucune agglutination</td><td>négatif</td><td>négatif</td><td>O</td></tr>
+<tr><td>Anti-A seul positif</td><td>positif</td><td>négatif</td><td>A</td></tr>
+<tr><td>Anti-B seul positif</td><td>négatif</td><td>positif</td><td>B</td></tr>
+<tr><td>Les deux positifs</td><td>positif</td><td>positif</td><td>AB</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>5. Conduite à tenir : avant, pendant, après</h2>
+
+<h3>5.1 Avant — préparation</h3>
+<ul>
+  <li><strong>Ordonnance</strong> : doit mentionner obligatoirement la date et l'heure prévues de la transfusion.</li>
+  <li><strong>Examens</strong> : 2 déterminations groupe + phénotype + RAI &lt; 72 h.</li>
+  <li><strong>Information du patient</strong> : vérifier qu'il a bien été informé (consentement éclairé).</li>
+  <li><strong>Médecin disponible</strong> : s'assurer qu'un médecin sera joignable.</li>
+  <li><strong>Matériel</strong> : transfuseur à filtre, voie veineuse de bon calibre, chariot d'urgence accessible.</li>
+</ul>
+
+<h3>5.2 À réception de la poche</h3>
+<ul>
+  <li><strong>Concordance d'identité</strong> : faire décliner au patient son identité (nom, prénom, date de naissance) ou la vérifier (bracelet, dossier) en cas d'impossibilité, et la comparer avec <strong>tous les documents</strong>.</li>
+  <li><strong>Concordance du groupe</strong> : étiquette du CGR + document de phénotypage + fiche de délivrance.</li>
+  <li><strong>Aspect du PSL</strong> : intégrité de la poche, péremption, aspect macroscopique.</li>
+  <li><strong>CUPT</strong> : réalisation immédiate au lit du patient avant branchement.</li>
+  <li><strong>Délai légal</strong> : la transfusion doit débuter dans les <strong>6 heures maximum</strong> suivant la réception du CGR dans le service.</li>
+</ul>
+
+<h3>5.3 Pendant — surveillance</h3>
+<div class="box box-success">
+  <ul>
+    <li><strong>Surveillance rapprochée</strong> : présence au lit du patient pendant les <strong>10 à 15 premières minutes</strong>.</li>
+    <li><strong>Puis</strong> : surveillance toutes les 15 à 30 min jusqu'à la fin.</li>
+    <li><strong>Paramètres</strong> : FC, TA, FR, SpO₂, T°, conscience, douleur, aspect cutané.</li>
+    <li><strong>Durée</strong> : un CGR doit être passé en 1 à 2 heures (max 4 h).</li>
+  </ul>
+</div>
+
+<h3>5.4 Après — traçabilité</h3>
+<ul>
+  <li><strong>Garder la poche vide</strong> : pendant <strong>4 heures minimum</strong>.</li>
+  <li><strong>Tracer chaque CGR</strong> : dans le dossier patient informatisé.</li>
+  <li><strong>Fiche de délivrance</strong> : archiver <strong>un seul exemplaire</strong> dans le dossier transfusionnel (les autres ont d'autres destinations).</li>
+  <li><strong>Ne jamais</strong> jeter immédiatement la poche.</li>
+</ul>
+
+<h2>6. Les accidents transfusionnels</h2>
+
+<h3>6.1 Accident hémolytique par conflit immunologique (ABO)</h3>
+<p>Le plus grave. Lié à une incompatibilité ABO : les anticorps du receveur détruisent les hématies de la poche, provoquant une hémolyse aiguë intravasculaire.</p>
+
+<div class="box box-danger">
+  <div class="box-title">Signes spécifiques de l'accident hémolytique</div>
+  <ul>
+    <li>Frissons, hyperthermie</li>
+    <li>Douleurs lombaires bilatérales (très évocatrices)</li>
+    <li>Hypotension, état de choc</li>
+    <li>Urines rouge porto (hémoglobinurie)</li>
+    <li>Sueurs, malaise général, oppression thoracique</li>
+  </ul>
+  <p>Ces signes doivent faire <strong>arrêter immédiatement</strong> la transfusion et appeler le médecin en urgence.</p>
+</div>
+
+<h3>6.2 Accident allergique (urticaire)</h3>
+<ul>
+  <li><strong>Tableau</strong> : urticaire, prurit, parfois bronchospasme.</li>
+  <li><strong>CAT</strong> : <strong>arrêter</strong> la transfusion <strong>en gardant la voie veineuse</strong> (perfusion de NaCl), prévenir immédiatement le médecin, poursuivre la surveillance rapprochée.</li>
+  <li><strong>Ne pas</strong> renvoyer la poche immédiatement ni reprendre la transfusion sans avis médical.</li>
+</ul>
+
+<h3>6.3 Autres accidents possibles</h3>
+<ul>
+  <li><strong>Surcharge volémique (TACO)</strong> : OAP, dyspnée, surtout chez sujet âgé / insuffisant cardiaque.</li>
+  <li><strong>TRALI</strong> : œdème pulmonaire lésionnel d'origine immunologique.</li>
+  <li><strong>Contamination bactérienne</strong> : rare mais grave (sepsis).</li>
+  <li><strong>Réaction fébrile non hémolytique</strong> : frissons + fièvre sans hémolyse.</li>
+</ul>
+
+<h2>7. Le dossier transfusionnel</h2>
+<div class="box box-key">
+  <p>Le dossier transfusionnel est <strong>partie intégrante du dossier médical</strong> du patient (et non un dossier séparé détenu par le dépôt de sang).</p>
+  <div class="box-title">Il doit comporter</div>
+  <ul>
+    <li>Les documents de groupage sanguin (carte de groupe valide).</li>
+    <li>Les doubles des ordonnances et des prescriptions de PSL.</li>
+    <li>Les résultats des recherches d'anticorps irréguliers (RAI).</li>
+    <li>Les fiches de délivrance archivées.</li>
+    <li>L'information / consentement du patient.</li>
+    <li>Les comptes-rendus d'éventuels incidents transfusionnels.</li>
+  </ul>
+</div>
+
+</section>
+
+<!-- ============ QUIZ PARTIEL ============ -->
+<section id="partiel" class="section">
+
+<div class="quiz-intro">
+  <h2 style="margin-top: 0; border: none;">Quiz du partiel — 40 questions</h2>
+  <p>Questions du partiel de février 2025. Une ou plusieurs réponses peuvent être justes.</p>
+  <div class="quiz-stats" id="stats-partiel">
+    <div class="stat"><div class="stat-num" id="answered-partiel">0</div><div class="stat-label">Répondues</div></div>
+    <div class="stat"><div class="stat-num" id="correct-partiel">0</div><div class="stat-label">Correctes</div></div>
+    <div class="stat"><div class="stat-num" id="score-partiel">—</div><div class="stat-label">Score</div></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-partiel" style="width: 0%"></div></div>
+  <div class="quiz-actions">
+    <button class="btn btn-primary" onclick="checkAll('partiel')">Tout valider</button>
+    <button class="btn btn-secondary" onclick="resetQuiz('partiel')">Recommencer</button>
+  </div>
+</div>
+
+<h3>Quiz 1 — Connaissances</h3>
+<div id="quiz-partiel-1"></div>
+
+<div class="case-banner">
+  <div class="box-title" style="color: var(--blue);">Cas concret — Madame Rose</div>
+  <p>Madame Rose, âgée de 35 ans, présente une anémie réfractaire. Le médecin prescrit une transfusion d'un Concentré de Globules Rouges (CGR). Elle n'a pas de carte de groupe valide.</p>
+</div>
+
+<h3>Quiz 2 — Cas concret</h3>
+<div id="quiz-partiel-2"></div>
+
+</section>
+
+<!-- ============ QUIZ SUPPL ============ -->
+<section id="suppl" class="section">
+
+<div class="quiz-intro">
+  <h2 style="margin-top: 0; border: none;">Quiz bonus — 15 questions</h2>
+  <p>Pour aller plus loin et consolider tes connaissances.</p>
+  <div class="quiz-stats" id="stats-suppl">
+    <div class="stat"><div class="stat-num" id="answered-suppl">0</div><div class="stat-label">Répondues</div></div>
+    <div class="stat"><div class="stat-num" id="correct-suppl">0</div><div class="stat-label">Correctes</div></div>
+    <div class="stat"><div class="stat-num" id="score-suppl">—</div><div class="stat-label">Score</div></div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-suppl" style="width: 0%"></div></div>
+  <div class="quiz-actions">
+    <button class="btn btn-primary" onclick="checkAll('suppl')">Tout valider</button>
+    <button class="btn btn-secondary" onclick="resetQuiz('suppl')">Recommencer</button>
+  </div>
+</div>
+
+<div id="quiz-suppl"></div>
+
+</section>
+
+<!-- ============ MEMO ============ -->
+<section id="memo" class="section">
+
+<h2 style="margin-top: 0;">Mémo final — les incontournables</h2>
+<p>Les points à retenir absolument pour le partiel. Classés par thème.</p>
+
+<ul class="memo-list">
+  <li><span class="tag tag-abo">ABO</span><div>Antigènes sur la membrane de l'hématie. Anticorps dans le plasma.</div></li>
+  <li><span class="tag tag-abo">ABO</span><div>Anticorps naturels réguliers = correspondent aux antigènes <strong>absents</strong>.</div></li>
+  <li><span class="tag tag-abo">ABO</span><div><strong>O</strong> = donneur universel CGR / receveur universel plasma.</div></li>
+  <li><span class="tag tag-abo">ABO</span><div><strong>AB</strong> = receveur universel CGR / donneur universel plasma.</div></li>
+  <li><span class="tag tag-rh">Rhésus</span><div>Patient Rh- reçoit <strong>uniquement</strong> du Rh-. Patient Rh+ : Rh+ ou Rh-.</div></li>
+  <li><span class="tag tag-rh">Rhésus</span><div>Phénotype étendu = D, C, c, E, e + K (Kell).</div></li>
+  <li><span class="tag tag-exam">Examens</span><div>RAI valable <strong>72 h</strong>.</div></li>
+  <li><span class="tag tag-exam">Examens</span><div>2 déterminations de groupe à 2 moments différents.</div></li>
+  <li><span class="tag tag-secu">Sécurité</span><div>CUPT <strong>toujours obligatoire</strong>, par 1 IDE, au lit du patient.</div></li>
+  <li><span class="tag tag-secu">Sécurité</span><div>CUPT porte sur les <strong>CGR uniquement</strong>.</div></li>
+  <li><span class="tag tag-secu">Sécurité</span><div>Délai légal : <strong>6 h max</strong> entre réception du CGR et début de transfusion.</div></li>
+  <li><span class="tag tag-secu">Sécurité</span><div>Urgence vitale : délai PSL &lt; 30 min, RAI non attendue.</div></li>
+  <li><span class="tag tag-surv">Surveillance</span><div>10 à 15 min en présence puis toutes les 15 à 30 min.</div></li>
+  <li><span class="tag tag-surv">Surveillance</span><div>Garder la poche vide <strong>4 h minimum</strong> après la fin.</div></li>
+  <li><span class="tag tag-acc">Accident</span><div>Hémolyse : frissons + hyperthermie + hypotension + lombalgies bilatérales + urines porto.</div></li>
+  <li><span class="tag tag-acc">Accident</span><div>Urticaire : arrêter en gardant la voie + médecin + surveillance.</div></li>
+  <li><span class="tag tag-doss">Dossier</span><div>Dossier transfusionnel = partie intégrante du dossier médical.</div></li>
+  <li><span class="tag tag-doss">Dossier</span><div>Fiche de délivrance : un seul exemplaire archivé dans le dossier patient.</div></li>
+</ul>
+
+<div class="box box-success" style="margin-top: 32px; text-align: center;">
+  <div class="box-title">💪 Bon courage pour ton partiel !</div>
+  <p>N'hésite pas à refaire les quiz plusieurs fois jusqu'à 100 % de bonnes réponses.</p>
+</div>
+
+</section>
+
+</main>
+
+<footer>
+  Fiche de révision · UE 4.4 · Compétence 4 · Semestre 4 IFSI
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ DONNÉES DES QUESTIONS ============
+const questionsPartiel1 = [
+  {n:1, q:"Les anticorps sont présents :", o:["Dans le plasma","À l'intérieur de l'hématie","Sur la membrane de l'hématie","Certains dans le plasma et d'autres sur les hématies"], a:[0], e:"Les anticorps sont dans le plasma. Les antigènes ABO sont sur la membrane de l'hématie."},
+  {n:2, q:"Les antigènes du système ABO sont présents :", o:["Dans le plasma","À l'intérieur de l'hématie","Sur la membrane de l'hématie","Certains dans le plasma et d'autres sur les hématies"], a:[2], e:"Les antigènes du système ABO sont sur la membrane de l'hématie."},
+  {n:3, q:"Les anticorps naturels réguliers correspondent :", o:["Aux anticorps présents","Aux antigènes présents","Aux antigènes absents"], a:[2], e:"Les anticorps naturels réguliers correspondent aux antigènes absents (un sujet A produit des anti-B)."},
+  {n:4, q:"Les anticorps naturels réguliers correspondant au groupe AB sont :", o:["Des anticorps anti-A et des anticorps anti-B","Aucun anticorps"], a:[1], e:"Le groupe AB possède antigènes A et B → aucun anticorps anti-A ni anti-B (receveur universel CGR)."},
+  {n:5, q:"Un patient ayant un groupe sanguin B est porteur :", o:["D'antigène B","D'anticorps anti-B","D'antigène A","D'anticorps anti-A","D'antigène O"], a:[0,3], e:"Patient B → antigène B sur les hématies + anti-A dans le plasma."},
+  {n:6, q:"Un donneur du groupe A+ peut donner un CGR à :", o:["Un receveur du groupe B+","Un receveur du groupe B-","Un receveur du groupe A+","Un receveur du groupe A-","Un receveur du groupe AB+"], a:[2,4], e:"Donneur A+ → CGR avec antigène A et Rh+. Compatible avec receveur A+ et AB+ (sans anti-A et Rh+)."},
+  {n:7, q:"Un patient du groupe O+ peut recevoir un CGR :", o:["D'un donneur O-","D'un donneur A+","D'un donneur B+","D'un donneur O+"], a:[0,3], e:"Patient O+ a anti-A et anti-B → reçoit uniquement du O. Étant Rh+, il accepte O+ et O-."},
+  {n:8, q:"Le système Rhésus permet d'identifier la présence de l'antigène D chez un sujet :", o:["Vrai","Faux"], a:[0], e:"Le système Rhésus identifie principalement la présence/absence de l'antigène D."},
+  {n:9, q:"Les règles de compatibilité Rhésus entre donneur et receveur :", o:["Un patient Rh- peut recevoir Rh+ ou Rh-","Un patient Rh- ne peut recevoir que du Rh-","Un patient Rh+ peut recevoir Rh+ ou Rh-"], a:[1,2], e:"Patient Rh- ne reçoit que du Rh- (immunisation anti-D). Patient Rh+ peut recevoir Rh+ ou Rh-."},
+  {n:10, q:"Le principe de la sécurité transfusionnelle permet d'éviter :", o:["Le risque hémolytique","Le risque hémorragique","Le risque thromboembolique","Le risque infectieux"], a:[0], e:"La sécurité transfusionnelle vise principalement à éviter le risque hémolytique (incompatibilité ABO)."},
+  {n:11, q:"Les règles de compatibilité de la transfusion de plasma :", o:["Sont identiques à celles des CGR","Sont inversées par rapport à celles des CGR","Permettent d'éviter d'apporter des antigènes que le patient n'a pas","Permettent d'éviter d'apporter des anticorps que le patient n'a pas"], a:[0,2,3], e:"Le principe d'évitement (ni antigène ni anticorps non désiré) reste le même que pour les CGR."},
+  {n:12, q:"Chez un patient de groupe O, le(s) antigène(s) sur les globules rouges :", o:["Antigène A","Antigène B","Aucun antigène","Antigènes AB"], a:[2], e:"Patient O → aucun antigène A ni B (donneur universel CGR)."},
+  {n:13, q:"Un patient de groupe O peut recevoir un plasma :", o:["Du groupe A","Du groupe AB","Du groupe B","Du groupe O"], a:[1,3], e:"Patient O reçoit du plasma O (mêmes anticorps) ou AB (sans anticorps)."},
+  {n:14, q:"En urgence, plasma utilisable sans groupage ABO connu :", o:["Plasma de groupe A","Plasma de groupe B","Plasma de groupe O","Plasma de groupe AB"], a:[3], e:"Plasma AB = donneur universel pour le plasma (aucun anticorps)."},
+  {n:15, q:"Dans une urgence relative, il est nécessaire :", o:["De réaliser les examens immuno-hématologiques","D'attendre les résultats des examens","De transfuser dans l'heure sans réaliser les examens","De transfuser sans attendre les résultats"], a:[0,1], e:"Urgence relative : on réalise les examens immuno-hémato ET on attend les résultats."},
+  {n:16, q:"Dans une urgence vitale :", o:["Il faut attendre les résultats du groupe sanguin et des RAI","Délai PSL entre 30 min et 1 h maxi","Délai PSL inférieur à 30 minutes","Pas nécessaire d'attendre les résultats des RAI"], a:[2,3], e:"Urgence vitale : délai PSL < 30 min, RAI non attendue."},
+  {n:17, q:"Le contrôle ultime pré-transfusionnel (CUPT) :", o:["Permet à l'IDE de s'assurer de la compatibilité receveur/CGR","Prévient les accidents par incompatibilité ABO","Prévient les accidents par anticorps irréguliers","Doit être réalisé en présence de 2 IDE"], a:[0,1], e:"Le CUPT vérifie la compatibilité ABO entre receveur et CGR au lit du patient. Il ne prévient pas les anticorps irréguliers (rôle de la RAI)."},
+  {n:18, q:"Le CUPT porte sur :", o:["Les CGR","Le plasma","Les plaquettes"], a:[0], e:"Le CUPT porte uniquement sur les CGR (pas le plasma ni les plaquettes)."},
+  {n:19, q:"Quand un anticorps rencontre un antigène et provoque l'agglutination, c'est :", o:["Une réaction positive","Une réaction négative"], a:[0], e:"Agglutination = réaction positive (présence de l'antigène recherché)."},
+  {n:20, q:"En urgence vitale, le CUPT :", o:["N'est pas obligatoire","Peut être réalisé après la transfusion","Est obligatoire quelles que soient les circonstances"], a:[2], e:"Le CUPT est obligatoire quelles que soient les circonstances, y compris en urgence vitale."},
+  {n:21, q:"CUPT : sang patient → anti-A négatif, anti-B positif. Sang poche → anti-A négatif, anti-B positif.", o:["La poche est de groupe B","La poche est de groupe O","Le receveur a une réaction positive avec anti-A","Patient et poche compatibles","Patient et poche incompatibles"], a:[0,3], e:"Patient et poche réagissent uniquement avec anti-B → tous deux groupe B → compatible."},
+  {n:22, q:"CUPT : sang patient → anti-A négatif, anti-B positif. Sang poche → anti-A positif, anti-B négatif.", o:["Le patient est de groupe B","Le patient est de groupe A","La poche est de groupe A","Patient et poche compatibles"], a:[0,2], e:"Patient anti-B+ → groupe B. Poche anti-A+ → groupe A. Patient B + poche A → incompatible."},
+  {n:23, q:"CUPT : sang patient → anti-A positif, anti-B négatif. Sang poche → anti-A positif, anti-B positif.", o:["Le patient est de groupe B","Le patient est de groupe A","La poche est de groupe O","La poche est de groupe AB","Patient et poche compatibles"], a:[1,3], e:"Patient anti-A+ seul → groupe A. Poche anti-A+ et anti-B+ → groupe AB. Patient A + poche AB → incompatible."},
+  {n:24, q:"CUPT : sang patient → anti-A négatif, anti-B négatif. Sang poche → anti-A négatif, anti-B négatif.", o:["La poche est de groupe O","La poche est de groupe AB","Patient et poche compatibles","Patient et poche incompatibles"], a:[0,2], e:"Patient et poche aucun antigène → tous deux groupe O → compatible."},
+  {n:25, q:"Délai maximum légal pour débuter la transfusion d'un CGR à réception :", o:["12 à 24 heures","6 heures","6 à 12 heures","Ne pas dépasser la péremption"], a:[1], e:"Délai légal maximum : 6 heures entre réception du CGR et début de transfusion."},
+  {n:26, q:"Le dossier transfusionnel est :", o:["Un dossier détenu uniquement par le dépôt de sang","Partie intégrante du dossier médical du patient"], a:[1], e:"Le dossier transfusionnel est partie intégrante du dossier médical."},
+  {n:27, q:"Le dossier transfusionnel doit comporter :", o:["Les documents de groupage sanguin","Les doubles des ordonnances et prescriptions de PSL","Les résultats des RAI"], a:[0,1,2], e:"Documents de groupage, ordonnances/prescriptions PSL, résultats RAI."}
+];
+
+const questionsPartiel2 = [
+  {n:28, q:"La prescription de PSL doit mentionner la date et l'heure prévues de la transfusion :", o:["Faux, ces mentions ne sont pas obligatoires","Vrai, toujours"], a:[1], e:"La date et l'heure prévues sont obligatoires sur la prescription de PSL."},
+  {n:29, q:"Les examens obligatoires à prévoir sont :", o:["RAI < 72 h","Taux de leucocytes","Hématocrite","2 déterminations de groupe sanguin avec phénotype"], a:[0,3], e:"Examens obligatoires : RAI < 72 h ET 2 déterminations de groupe avec phénotype."},
+  {n:30, q:"Vous êtes seul(e), vous devez prélever 2 déterminations de groupe :", o:["Vous prélevez une, l'envoyez, puis dans un second temps prélevez la 2ᵉ","Vous prélevez les 2 ensemble et envoyez de suite","Vous prélevez et étiquetez les 2 ensemble, envoyez l'une de suite, l'autre plus tard"], a:[0], e:"Seul(e) : on prélève une détermination, on l'envoie, puis dans un 2ᵉ temps on prélève la 2ᵉ. Cela garantit deux prélèvements indépendants."},
+  {n:31, q:"Phénotypage de Mme Rose : AB D-C-c+E+e-K-. Elle possède :", o:["Anticorps naturels réguliers anti-A et anti-B","Antigènes A et B à la surface de ses hématies","Anticorps c et E","Antigènes c et E"], a:[3], e:"Phénotype c+E+ → présence des antigènes c et E. (Mme Rose étant AB, elle a aussi A et B mais la réponse principale est D.)"},
+  {n:32, q:"CGR phénotypé pour Mme Rose (AB D-C-c+E+e-K-). Elle peut recevoir :", o:["Un CGR AB D-C-c+E+e-K-","Un CGR A D-C-c+E+e-K-","Un CGR AB D-C-c+E+e-K+"], a:[0,1], e:"Patient AB Rh- : peut recevoir AB ou A. Phénotype c+E+ : on choisit un CGR sans D, sans C, sans e, sans K. Le CGR avec K+ est interdit."},
+  {n:33, q:"Avant de faire acheminer le CGR, je dois :", o:["M'assurer que Mme Rose a bien été informée","M'assurer qu'un médecin sera disponible","M'assurer que la patiente est à jeun"], a:[0,1], e:"Vérifier l'information de la patiente ET la disponibilité d'un médecin. Pas besoin d'être à jeun."},
+  {n:34, q:"Le contrôle de concordance d'identité avant transfusion :", o:["Faire décliner ou vérifier (bracelet, dossier) ET comparer avec tous les documents","Demander de confirmer qu'elle s'appelle bien Madame Rose","Faire décliner ou vérifier (bracelet, dossier)"], a:[0], e:"Identitovigilance : faire décliner OU vérifier ET comparer avec tous les documents. La C est incomplète (pas de comparaison)."},
+  {n:35, q:"Avant de transfuser, vous vérifiez la concordance du groupe avec :", o:["Uniquement le document de phénotypage et la fiche de délivrance","Uniquement l'étiquette du CGR et la fiche de délivrance","L'étiquette du CGR, le document de phénotypage et la fiche de délivrance"], a:[2], e:"Concordance entre TROIS éléments : étiquette CGR + document de phénotypage + fiche de délivrance."},
+  {n:36, q:"CUPT chez Mme Rose : sang patient → anti-A positif, anti-B positif. Sang poche → anti-A positif, anti-B négatif.", o:["La poche est de groupe A","La poche est de groupe B","Le receveur a une réaction positive avec anti-A et anti-B","Patient et poche compatibles","Patient et poche incompatibles"], a:[0,2,3], e:"Patient anti-A+ et anti-B+ → AB. Poche anti-A+ seul → A. AB receveur universel CGR → compatible."},
+  {n:37, q:"Après avoir démarré la transfusion, le temps de surveillance est :", o:["Entre 5 et 10 min puis toutes les 5 min","Moins de 5 min puis toutes les heures","Entre 10 et 15 min puis toutes les 15 à 30 min","30 min puis toutes les 30 min"], a:[2], e:"Présence pendant 10 à 15 min puis surveillance toutes les 15 à 30 min."},
+  {n:38, q:"Signes spécifiques d'accident hémolytique par conflit immunologique :", o:["Urines rouge / porto","Hypotension","Frissons, hyperthermie","Douleurs lombaires bilatérales","Sueurs"], a:[0,1,2,3], e:"Hémolyse : urines rouge porto, hypotension, frissons + hyperthermie, douleurs lombaires bilatérales. Sueurs aspécifiques."},
+  {n:39, q:"Au cours de la transfusion, urticaire abdominale :", o:["J'arrête en gardant la voie, je préviens le médecin et je surveille","Je poursuis et préviens le médecin","Je surveille et préviens si ça ne s'arrange pas","J'arrête immédiatement et renvoie la poche"], a:[0], e:"Urticaire = réaction allergique. CAT : arrêter en gardant la voie veineuse, prévenir le médecin, surveillance. Ne pas renvoyer la poche immédiatement."},
+  {n:40, q:"À la fin de la transfusion :", o:["Je renseigne tous les exemplaires et range tout dans le dossier","Je garde la poche vide pendant 4 heures minimum","Je trace chaque CGR dans le dossier patient informatisé","Je jette la poche vide","J'archive un seul exemplaire de la fiche dans le dossier transfusionnel"], a:[1,2,4], e:"Garder la poche vide 4 h minimum. Tracer chaque CGR. Archiver UN exemplaire de la fiche de délivrance dans le dossier transfusionnel."}
+];
+
+const questionsSuppl = [
+  {n:41, q:"La durée de validité d'une RAI avant transfusion :", o:["24 heures","48 heures","72 heures","7 jours"], a:[2], e:"La RAI est valable 72 heures avant transfusion."},
+  {n:42, q:"Le donneur universel pour les CGR est :", o:["Groupe AB+","Groupe O-","Groupe O+","Groupe AB-"], a:[1], e:"Donneur universel CGR = O négatif (aucun antigène A, B ou D)."},
+  {n:43, q:"Le receveur universel pour le PLASMA est :", o:["Groupe AB","Groupe O","Groupe A","Groupe B"], a:[1], e:"Receveur universel plasma = O (aucun antigène, aucun anticorps du plasma ne peut se fixer)."},
+  {n:44, q:"Lors d'une transfusion de plasma, on cherche à éviter :", o:["D'apporter des antigènes que le patient n'a pas","D'apporter des anticorps que le patient n'a pas","D'apporter des hématies incompatibles","Une réaction allergique"], a:[1], e:"Pour le plasma, on évite d'apporter des anticorps que le patient n'a pas (le plasma véhicule des anticorps)."},
+  {n:45, q:"La durée maximale de passage d'un CGR :", o:["30 minutes","1 heure","2 à 4 heures maximum","6 heures"], a:[2], e:"Un CGR doit être passé en 2 à 4 heures maximum."},
+  {n:46, q:"Une patiente Rh- peut recevoir :", o:["Du sang Rh+ uniquement","Du sang Rh- uniquement","Du sang Rh+ ou Rh-","Aucun sans test préalable"], a:[1], e:"Patiente Rh- ne peut recevoir que du sang Rh- (risque d'immunisation anti-D)."},
+  {n:47, q:"Affirmations vraies concernant le CUPT :", o:["Réalisé au lit du patient","Réalisé au laboratoire","Porte sur les CGR uniquement","Obligatoire pour le plasma","Prévient l'incompatibilité ABO"], a:[0,2,4], e:"CUPT : au lit du patient, par 1 IDE, sur les CGR uniquement, prévient l'incompatibilité ABO."},
+  {n:48, q:"En transfusion : frissons + hyperthermie + lombalgies + urines foncées. Vous suspectez :", o:["Une réaction allergique simple","Un accident hémolytique par incompatibilité ABO","Une surcharge volémique","Un TRALI"], a:[1], e:"Cette triade = accident hémolytique par incompatibilité ABO. URGENCE."},
+  {n:49, q:"Devant un accident transfusionnel, la première action :", o:["Continuer en surveillant","Arrêter immédiatement en gardant la voie veineuse","Retirer la voie veineuse","Appeler le médecin avant toute action"], a:[1], e:"Premier réflexe : ARRÊTER en gardant la voie veineuse, puis appeler le médecin."},
+  {n:50, q:"Concernant la fiche de délivrance :", o:["Un seul exemplaire est archivé dans le dossier transfusionnel","Tous les exemplaires sont archivés dans le dossier","Elle ne fait pas partie du dossier transfusionnel","Les autres exemplaires ont d'autres destinations (EFS, hémovigilance)"], a:[0,3], e:"Un seul exemplaire archivé. Les autres : EFS, hémovigilance."},
+  {n:51, q:"Le phénotype Rhésus étendu inclut les antigènes :", o:["A, B, O","D, C, c, E, e","K (Kell)","M, N, S"], a:[1,2], e:"Phénotype Rhésus étendu : D, C, c, E, e (Rhésus) ET K (Kell, souvent associé)."},
+  {n:52, q:"Délai entre la réception du CGR et le début de transfusion :", o:["Inférieur à 6 heures","Inférieur à 24 heures","Inférieur à 30 minutes","Pas de délai"], a:[0], e:"Délai légal maximum : 6 heures."},
+  {n:53, q:"Un patient de groupe AB peut recevoir un CGR :", o:["Du groupe O","Du groupe A","Du groupe B","Du groupe AB","Aucun, il est receveur universel"], a:[0,1,2,3], e:"Un patient AB est receveur universel pour les CGR : tous les groupes ABO sont compatibles."},
+  {n:54, q:"L'identitovigilance avant transfusion impose de :", o:["Faire décliner son identité (nom, prénom, date de naissance)","Comparer avec le bracelet et tous les documents","Demander uniquement le nom","Demander uniquement la date de naissance"], a:[0,1], e:"Décliner identité complète ET comparer avec bracelet et tous les documents."},
+  {n:55, q:"La sécurité transfusionnelle vise principalement à éviter :", o:["Le risque hémolytique","Le risque infectieux","Le risque thromboembolique","Le risque hémorragique"], a:[0], e:"La sécurité transfusionnelle vise principalement à éviter le risque hémolytique."}
+];
+
+// ============ STATE ============
+const state = {
+  partiel: {},
+  suppl: {}
+};
+
+// Charger l'état depuis localStorage
+function loadState() {
+  try {
+    const saved = localStorage.getItem('transfusionQuiz');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      state.partiel = parsed.partiel || {};
+      state.suppl = parsed.suppl || {};
+    }
+  } catch(e) { console.warn('Erreur chargement state', e); }
+}
+
+function saveState() {
+  try {
+    localStorage.setItem('transfusionQuiz', JSON.stringify(state));
+  } catch(e) { console.warn('Erreur sauvegarde state', e); }
+}
+
+// ============ RENDER ============
+function renderQuestions(containerId, questions, quizKey) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = '';
+  questions.forEach(q => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = `q-${q.n}`;
+    div.dataset.quiz = quizKey;
+    div.dataset.num = q.n;
+
+    const optionsHtml = q.o.map((opt, i) => {
+      const id = `q${q.n}-o${i}`;
+      return `
+        <li class="option" data-idx="${i}">
+          <input type="checkbox" id="${id}" data-q="${q.n}" data-quiz="${quizKey}">
+          <label for="${id}">${String.fromCharCode(65+i)}. ${opt}</label>
+        </li>
+      `;
+    }).join('');
+
+    div.innerHTML = `
+      <div class="q-num">Question ${q.n}</div>
+      <div class="q-text">${q.q}</div>
+      <ul class="options">${optionsHtml}</ul>
+      <div class="question-actions">
+        <button class="check-btn" onclick="checkOne(${q.n}, '${quizKey}')">Valider</button>
+        <span class="result-info"></span>
+      </div>
+    `;
+
+    container.appendChild(div);
+
+    // Restore saved answers
+    const saved = state[quizKey][q.n];
+    if (saved) {
+      saved.selected.forEach(i => {
+        const cb = div.querySelector(`input[id="q${q.n}-o${i}"]`);
+        if (cb) cb.checked = true;
+        const li = div.querySelector(`li[data-idx="${i}"]`);
+        if (li) li.classList.add('selected');
+      });
+      if (saved.validated) {
+        showResult(q, quizKey, false);
+      }
+    }
+  });
+
+  // Listeners
+  container.querySelectorAll('.option').forEach(li => {
+    li.addEventListener('click', e => {
+      if (e.target.tagName === 'INPUT') return;
+      if (li.closest('.question').classList.contains('validated')) return;
+      const cb = li.querySelector('input');
+      cb.checked = !cb.checked;
+      cb.dispatchEvent(new Event('change'));
+    });
+  });
+
+  container.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const li = cb.closest('.option');
+      if (cb.checked) li.classList.add('selected');
+      else li.classList.remove('selected');
+    });
+  });
+}
+
+// ============ VALIDATION ============
+function getQuestion(num, quizKey) {
+  let arr;
+  if (quizKey === 'partiel') {
+    arr = [...questionsPartiel1, ...questionsPartiel2];
+  } else {
+    arr = questionsSuppl;
+  }
+  return arr.find(x => x.n === num);
+}
+
+function checkOne(num, quizKey) {
+  const q = getQuestion(num, quizKey);
+  if (!q) return;
+  const div = document.getElementById(`q-${num}`);
+  if (div.classList.contains('validated')) return;
+
+  const selected = [];
+  div.querySelectorAll('input:checked').forEach(cb => {
+    const idx = parseInt(cb.id.split('-o')[1]);
+    selected.push(idx);
+  });
+
+  state[quizKey][num] = { selected, validated: true };
+  saveState();
+
+  showResult(q, quizKey, true);
+  updateStats(quizKey);
+}
+
+function showResult(q, quizKey, animate) {
+  const div = document.getElementById(`q-${q.n}`);
+  div.classList.add('validated');
+
+  const selected = state[quizKey][q.n]?.selected || [];
+  const correct = q.a;
+
+  // Marquer chaque option
+  q.o.forEach((_, i) => {
+    const li = div.querySelector(`li[data-idx="${i}"]`);
+    if (correct.includes(i)) {
+      li.classList.add('correct-answer');
+    } else if (selected.includes(i)) {
+      li.classList.add('wrong-selected');
+    }
+    li.classList.remove('selected');
+  });
+
+  // Calculer le résultat
+  const allCorrect = correct.every(c => selected.includes(c));
+  const noWrong = selected.every(s => correct.includes(s));
+  const isCorrect = allCorrect && noWrong;
+  const isPartial = (allCorrect && !noWrong) || (selected.length > 0 && noWrong && !allCorrect);
+
+  // Badge
+  const resultInfo = div.querySelector('.result-info');
+  let badgeClass, badgeText;
+  if (isCorrect) {
+    badgeClass = 'correct';
+    badgeText = '✓ Correct';
+  } else if (isPartial) {
+    badgeClass = 'partial';
+    badgeText = '~ Partiel';
+  } else {
+    badgeClass = 'wrong';
+    badgeText = '✗ Incorrect';
+  }
+
+  // Bonnes réponses en lettres
+  const correctLetters = correct.map(i => String.fromCharCode(65+i)).join(', ');
+
+  resultInfo.innerHTML = `<span class="result-badge ${badgeClass}">${badgeText}</span>`;
+
+  // Cacher le bouton valider
+  const checkBtn = div.querySelector('.check-btn');
+  if (checkBtn) checkBtn.style.display = 'none';
+
+  // Explication
+  if (!div.querySelector('.explanation')) {
+    const exp = document.createElement('div');
+    exp.className = 'explanation';
+    exp.innerHTML = `<strong>Réponse(s) : ${correctLetters}</strong> — ${q.e}`;
+    div.appendChild(exp);
+  }
+
+  if (animate) {
+    div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function checkAll(quizKey) {
+  let questions;
+  if (quizKey === 'partiel') {
+    questions = [...questionsPartiel1, ...questionsPartiel2];
+  } else {
+    questions = questionsSuppl;
+  }
+
+  let validatedCount = 0;
+  questions.forEach(q => {
+    const div = document.getElementById(`q-${q.n}`);
+    if (!div.classList.contains('validated')) {
+      const selected = [];
+      div.querySelectorAll('input:checked').forEach(cb => {
+        const idx = parseInt(cb.id.split('-o')[1]);
+        selected.push(idx);
+      });
+      state[quizKey][q.n] = { selected, validated: true };
+      showResult(q, quizKey, false);
+      validatedCount++;
+    }
+  });
+
+  saveState();
+  updateStats(quizKey);
+
+  if (validatedCount === 0) {
+    showToast('Toutes les questions sont déjà validées');
+  } else {
+    showToast(`${validatedCount} question(s) validée(s)`);
+  }
+}
+
+function resetQuiz(quizKey) {
+  if (!confirm('Es-tu sûr(e) de vouloir recommencer ce quiz ?')) return;
+
+  state[quizKey] = {};
+  saveState();
+
+  let questions;
+  if (quizKey === 'partiel') {
+    questions = [...questionsPartiel1, ...questionsPartiel2];
+  } else {
+    questions = questionsSuppl;
+  }
+
+  questions.forEach(q => {
+    const div = document.getElementById(`q-${q.n}`);
+    if (!div) return;
+    div.classList.remove('validated');
+    div.querySelectorAll('input').forEach(cb => cb.checked = false);
+    div.querySelectorAll('.option').forEach(li => {
+      li.classList.remove('selected', 'correct-answer', 'wrong-selected');
+    });
+    const exp = div.querySelector('.explanation');
+    if (exp) exp.remove();
+    const resultInfo = div.querySelector('.result-info');
+    if (resultInfo) resultInfo.innerHTML = '';
+    const checkBtn = div.querySelector('.check-btn');
+    if (checkBtn) checkBtn.style.display = '';
+  });
+
+  updateStats(quizKey);
+  showToast('Quiz réinitialisé');
+}
+
+// ============ STATS ============
+function updateStats(quizKey) {
+  let questions;
+  if (quizKey === 'partiel') {
+    questions = [...questionsPartiel1, ...questionsPartiel2];
+  } else {
+    questions = questionsSuppl;
+  }
+
+  const total = questions.length;
+  let answered = 0;
+  let correct = 0;
+
+  questions.forEach(q => {
+    const s = state[quizKey][q.n];
+    if (s && s.validated) {
+      answered++;
+      const sel = s.selected;
+      const c = q.a;
+      const allCorrect = c.every(x => sel.includes(x));
+      const noWrong = sel.every(x => c.includes(x));
+      if (allCorrect && noWrong) correct++;
+    }
+  });
+
+  document.getElementById(`answered-${quizKey}`).textContent = answered;
+  document.getElementById(`correct-${quizKey}`).textContent = correct;
+
+  const scoreEl = document.getElementById(`score-${quizKey}`);
+  if (answered === 0) {
+    scoreEl.textContent = '—';
+  } else {
+    const pct = Math.round((correct / answered) * 100);
+    scoreEl.textContent = `${pct}%`;
+    if (pct >= 80) scoreEl.style.color = 'var(--green)';
+    else if (pct >= 60) scoreEl.style.color = 'var(--orange)';
+    else scoreEl.style.color = 'var(--red)';
+  }
+
+  document.getElementById(`progress-${quizKey}`).style.width = `${(answered/total)*100}%`;
+}
+
+// ============ NAVIGATION ============
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.section;
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(target).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    localStorage.setItem('lastTab', target);
+  });
+});
+
+// ============ THEME ============
+const themeBtn = document.getElementById('themeBtn');
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('theme', theme);
+}
+
+themeBtn.addEventListener('click', () => {
+  const current = document.body.dataset.theme;
+  setTheme(current === 'dark' ? 'light' : 'dark');
+});
+
+// ============ RESET TOTAL ============
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Réinitialiser TOUS les quiz et effacer ta progression ?')) return;
+  localStorage.removeItem('transfusionQuiz');
+  state.partiel = {};
+  state.suppl = {};
+  resetQuiz('partiel');
+  resetQuiz('suppl');
+  showToast('Tout a été réinitialisé');
+});
+
+// ============ TOAST ============
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ============ INIT ============
+function init() {
+  loadState();
+
+  // Theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme('dark');
+  }
+
+  // Last tab
+  const lastTab = localStorage.getItem('lastTab');
+  if (lastTab) {
+    const tab = document.querySelector(`.nav-tab[data-section="${lastTab}"]`);
+    if (tab) tab.click();
+  }
+
+  // Render quizzes
+  renderQuestions('quiz-partiel-1', questionsPartiel1, 'partiel');
+  renderQuestions('quiz-partiel-2', questionsPartiel2, 'partiel');
+  renderQuestions('quiz-suppl', questionsSuppl, 'suppl');
+
+  updateStats('partiel');
+  updateStats('suppl');
+}
+
+init();
+</script>
+
+</body>
+</html>
