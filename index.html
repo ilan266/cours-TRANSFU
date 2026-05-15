@@ -649,6 +649,196 @@
   [data-theme="dark"] .tag-acc { background: #3D1F1F; color: #E57373; }
   [data-theme="dark"] .tag-doss { background: #1B2D2A; color: #4DB6AC; }
 
+  /* ========== SCHÉMAS ABO ========== */
+  .schema-wrap {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 16px 0;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+  .schema-wrap svg { max-width: 100%; height: auto; }
+  .schema-caption {
+    font-size: 13px;
+    color: var(--text-soft);
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* ========== TRAINER TEST ULTIME ========== */
+  .trainer {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin: 16px 0;
+    box-shadow: var(--shadow);
+  }
+  .trainer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .trainer-counter {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .trainer-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .trainer-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+  .trainer-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .trainer-btn-sec {
+    background: var(--card);
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+  .trainer-btn-sec:hover { background: var(--primary-light); }
+
+  .test-card {
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 16px auto;
+    max-width: 400px;
+  }
+  .test-card-title { text-align: center; font-weight: 700; margin-bottom: 12px; color: var(--primary-dark); font-size: 15px; }
+  .test-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+  }
+  .test-row-label { font-weight: 600; font-size: 14px; }
+  .test-cell {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .test-cell.agglu {
+    background: #C62828;
+    border-color: #B71C1C;
+  }
+  .test-cell.agglu::after {
+    content: '●';
+    color: white;
+    font-size: 28px;
+  }
+  .test-cell.clear::after {
+    content: '○';
+    color: var(--text-mute);
+    font-size: 24px;
+  }
+  .test-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--text-soft);
+    font-weight: 600;
+    text-align: center;
+  }
+  .test-header > div:first-child { text-align: left; }
+
+  .trainer-step {
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin: 12px 0;
+    border-left: 3px solid var(--primary);
+  }
+  .trainer-step-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-dark);
+  }
+  .trainer-choice {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    margin: 6px 0;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 14px;
+    font-family: inherit;
+    width: 100%;
+    text-align: left;
+    color: var(--text);
+    display: block;
+  }
+  .trainer-choice:hover { border-color: var(--primary); background: var(--primary-light); }
+  .trainer-choice.correct {
+    border-color: var(--green);
+    background: var(--green-light);
+    color: var(--green);
+    font-weight: 600;
+  }
+  .trainer-choice.correct::after { content: ' ✓'; }
+  .trainer-choice.wrong {
+    border-color: var(--red);
+    background: var(--red-light);
+    color: var(--red);
+  }
+  .trainer-choice.wrong::after { content: ' ✗'; }
+  .trainer-choice:disabled { cursor: default; }
+
+  .formulation {
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .formulation-title {
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 8px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .formulation p { margin: 6px 0; }
+  .formulation strong { color: var(--blue); }
+
+  .verdict {
+    text-align: center;
+    padding: 16px;
+    border-radius: var(--radius);
+    margin: 16px 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .verdict-go { background: var(--green-light); color: var(--green); border: 2px solid var(--green); }
+  .verdict-stop { background: var(--red-light); color: var(--red); border: 2px solid var(--red); }
+
   /* ========== CONTENTS / TOC ========== */
   .toc {
     background: var(--card);
@@ -739,7 +929,7 @@
   <div class="nav-tabs">
     <button class="nav-tab active" data-section="cours">📚 Le cours</button>
     <button class="nav-tab" data-section="partiel">📝 Quiz partiel<span class="badge">40</span></button>
-    <button class="nav-tab" data-section="suppl">✨ Quiz bonus<span class="badge">34</span></button>
+    <button class="nav-tab" data-section="suppl">✨ Quiz bonus<span class="badge">45</span></button>
     <button class="nav-tab" data-section="memo">⭐ Mémo</button>
   </div>
 </nav>
@@ -758,7 +948,11 @@
     <li>Sécurité transfusionnelle (urgences, CUPT)</li>
     <li>Conduite à tenir : avant, pendant, après</li>
     <li>Accidents transfusionnels</li>
-    <li>Dossier transfusionnel</li>
+    <li>Le dossier transfusionnel — les 6 documents en détail</li>
+    <li>À l'arrivée du coursier — vérifications</li>
+    <li><strong>Les 5 étapes officielles avant transfusion</strong></li>
+    <li>Les tests ultimes — exemples avec formulations exactes</li>
+    <li><strong>🎯 Entraîneur interactif — Test ultime</strong></li>
   </ol>
 </div>
 
@@ -829,6 +1023,63 @@
   </ul>
 </div>
 
+<div class="schema-wrap">
+  <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowCGR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#C2185B"/>
+      </marker>
+      <marker id="arrowSelfCGR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"/>
+      </marker>
+    </defs>
+
+    <!-- Title -->
+    <text x="300" y="22" text-anchor="middle" font-size="16" font-weight="700" fill="#C2185B">Compatibilité ABO — CGR (donneurs → receveurs)</text>
+
+    <!-- O group (left, donneur universel) -->
+    <circle cx="80" cy="180" r="42" fill="#C62828" stroke="#880E4F" stroke-width="3"/>
+    <text x="80" y="178" text-anchor="middle" font-size="22" font-weight="700" fill="white">O</text>
+    <text x="80" y="198" text-anchor="middle" font-size="10" fill="white">donneur</text>
+    <text x="80" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#C2185B">UNIVERSEL</text>
+
+    <!-- A group (top) -->
+    <circle cx="300" cy="100" r="38" fill="#E91E63" stroke="#880E4F" stroke-width="2"/>
+    <text x="300" y="108" text-anchor="middle" font-size="20" font-weight="700" fill="white">A</text>
+
+    <!-- B group (bottom) -->
+    <circle cx="300" cy="260" r="38" fill="#E91E63" stroke="#880E4F" stroke-width="2"/>
+    <text x="300" y="268" text-anchor="middle" font-size="20" font-weight="700" fill="white">B</text>
+
+    <!-- AB group (right, receveur universel) -->
+    <circle cx="520" cy="180" r="42" fill="#C62828" stroke="#880E4F" stroke-width="3"/>
+    <text x="520" y="178" text-anchor="middle" font-size="20" font-weight="700" fill="white">AB</text>
+    <text x="520" y="198" text-anchor="middle" font-size="10" fill="white">receveur</text>
+    <text x="520" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#C2185B">UNIVERSEL</text>
+
+    <!-- Self-loops (auto-compatible) -->
+    <path d="M 50 150 Q 30 130 50 110 Q 75 100 80 138" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfCGR)"/>
+    <path d="M 290 65 Q 290 45 310 50 Q 340 60 333 90" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfCGR)"/>
+    <path d="M 333 270 Q 350 295 310 305 Q 285 308 290 285" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfCGR)"/>
+    <path d="M 550 150 Q 575 130 550 110 Q 520 100 515 138" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfCGR)"/>
+
+    <!-- O → A, O → B, O → AB -->
+    <line x1="115" y1="160" x2="260" y2="115" stroke="#C2185B" stroke-width="3" marker-end="url(#arrowCGR)"/>
+    <line x1="115" y1="200" x2="260" y2="245" stroke="#C2185B" stroke-width="3" marker-end="url(#arrowCGR)"/>
+    <line x1="125" y1="180" x2="475" y2="180" stroke="#C2185B" stroke-width="3" marker-end="url(#arrowCGR)"/>
+
+    <!-- A → AB -->
+    <line x1="335" y1="115" x2="485" y2="160" stroke="#C2185B" stroke-width="3" marker-end="url(#arrowCGR)"/>
+
+    <!-- B → AB -->
+    <line x1="335" y1="245" x2="485" y2="200" stroke="#C2185B" stroke-width="3" marker-end="url(#arrowCGR)"/>
+
+    <!-- Légende -->
+    <text x="300" y="335" text-anchor="middle" font-size="12" fill="#666">La flèche va du <tspan font-weight="700" fill="#C2185B">DONNEUR</tspan> vers le <tspan font-weight="700" fill="#C2185B">RECEVEUR</tspan></text>
+  </svg>
+  <div class="schema-caption">O donne à tous · AB reçoit de tous · A et B reçoivent O et leur propre groupe</div>
+</div>
+
 <div class="table-wrap">
 <table>
 <thead><tr><th>Receveur ↓ / Donneur →</th><th>O</th><th>A</th><th>B</th><th>AB</th></tr></thead>
@@ -859,6 +1110,63 @@
     <li><strong>Receveur universel plasma</strong> : groupe O (aucun antigène).</li>
     <li><strong>En urgence sans groupage</strong> : on transfuse du <strong>plasma AB</strong>.</li>
   </ul>
+</div>
+
+<div class="schema-wrap">
+  <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arrowPL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#1565C0"/>
+      </marker>
+      <marker id="arrowSelfPL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#666"/>
+      </marker>
+    </defs>
+
+    <!-- Title -->
+    <text x="300" y="22" text-anchor="middle" font-size="16" font-weight="700" fill="#1565C0">Compatibilité ABO — PLASMA (inversé)</text>
+
+    <!-- AB group (left, donneur universel pour plasma) -->
+    <circle cx="80" cy="180" r="42" fill="#FFA726" stroke="#E65100" stroke-width="3"/>
+    <text x="80" y="178" text-anchor="middle" font-size="20" font-weight="700" fill="white">AB</text>
+    <text x="80" y="198" text-anchor="middle" font-size="10" fill="white">donneur</text>
+    <text x="80" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1565C0">UNIVERSEL</text>
+
+    <!-- A group (top) -->
+    <circle cx="300" cy="100" r="38" fill="#FFB74D" stroke="#E65100" stroke-width="2"/>
+    <text x="300" y="108" text-anchor="middle" font-size="20" font-weight="700" fill="white">A</text>
+
+    <!-- B group (bottom) -->
+    <circle cx="300" cy="260" r="38" fill="#FFB74D" stroke="#E65100" stroke-width="2"/>
+    <text x="300" y="268" text-anchor="middle" font-size="20" font-weight="700" fill="white">B</text>
+
+    <!-- O group (right, receveur universel pour plasma) -->
+    <circle cx="520" cy="180" r="42" fill="#FFA726" stroke="#E65100" stroke-width="3"/>
+    <text x="520" y="178" text-anchor="middle" font-size="22" font-weight="700" fill="white">O</text>
+    <text x="520" y="198" text-anchor="middle" font-size="10" fill="white">receveur</text>
+    <text x="520" y="240" text-anchor="middle" font-size="11" font-weight="600" fill="#1565C0">UNIVERSEL</text>
+
+    <!-- Self-loops (auto-compatible) -->
+    <path d="M 50 150 Q 30 130 50 110 Q 75 100 80 138" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfPL)"/>
+    <path d="M 290 65 Q 290 45 310 50 Q 340 60 333 90" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfPL)"/>
+    <path d="M 333 270 Q 350 295 310 305 Q 285 308 290 285" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfPL)"/>
+    <path d="M 550 150 Q 575 130 550 110 Q 520 100 515 138" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowSelfPL)"/>
+
+    <!-- AB → A, AB → B, AB → O -->
+    <line x1="115" y1="160" x2="260" y2="115" stroke="#1565C0" stroke-width="3" marker-end="url(#arrowPL)"/>
+    <line x1="115" y1="200" x2="260" y2="245" stroke="#1565C0" stroke-width="3" marker-end="url(#arrowPL)"/>
+    <line x1="125" y1="180" x2="475" y2="180" stroke="#1565C0" stroke-width="3" marker-end="url(#arrowPL)"/>
+
+    <!-- A → O -->
+    <line x1="335" y1="115" x2="485" y2="160" stroke="#1565C0" stroke-width="3" marker-end="url(#arrowPL)"/>
+
+    <!-- B → O -->
+    <line x1="335" y1="245" x2="485" y2="200" stroke="#1565C0" stroke-width="3" marker-end="url(#arrowPL)"/>
+
+    <!-- Légende -->
+    <text x="300" y="335" text-anchor="middle" font-size="12" fill="#666">La flèche va du <tspan font-weight="700" fill="#1565C0">DONNEUR</tspan> vers le <tspan font-weight="700" fill="#1565C0">RECEVEUR</tspan></text>
+  </svg>
+  <div class="schema-caption">⚡ INVERSÉ par rapport au CGR : AB donne à tous · O reçoit de tous</div>
 </div>
 
 <div class="table-wrap">
@@ -1119,18 +1427,326 @@
   <li><strong>Réaction fébrile non hémolytique</strong> : frissons + fièvre sans hémolyse.</li>
 </ul>
 
-<h2>7. Le dossier transfusionnel</h2>
+<h2>7. Le dossier transfusionnel — les 6 documents en détail</h2>
+
 <div class="box box-key">
-  <p>Le dossier transfusionnel est <strong>partie intégrante du dossier médical</strong> du patient (et non un dossier séparé détenu par le dépôt de sang).</p>
-  <div class="box-title">Il doit comporter</div>
+  <p>Le dossier transfusionnel est <strong>partie intégrante du dossier médical</strong> du patient. Il contient <strong>6 types de documents</strong> à connaître par cœur.</p>
+</div>
+
+<h3>7.1 Les 6 documents du dossier transfusionnel</h3>
+
+<div class="box box-info">
+  <ol>
+    <li><strong>Prescription médicale</strong> (ordonnance PSL)</li>
+    <li><strong>Fiche de délivrance nominative (FDN)</strong></li>
+    <li><strong>Groupage du patient</strong> (carte de groupe + 2 déterminations)</li>
+    <li><strong>Recherche d'agglutinines irrégulières (RAI)</strong> &lt; 72 h</li>
+    <li><strong>Bordereau de transport</strong></li>
+    <li><strong>Documents d'identité</strong> (CNI, bracelet…)</li>
+  </ol>
+</div>
+
+<h3>7.2 La prescription médicale — ce qu'elle doit contenir</h3>
+
+<h4>🔵 Concernant le prescripteur</h4>
+<ul>
+  <li>Identification et coordonnées du <strong>service demandeur</strong></li>
+  <li>Identification du <strong>médecin prescripteur</strong> : nom, prénom, signature + n° de téléphone</li>
+  <li><strong>Date de la prescription</strong></li>
+</ul>
+
+<h4>🟡 Concernant le patient</h4>
+<ul>
+  <li><strong>Nom de naissance</strong> — <strong>Nom d'usage</strong> — <strong>Prénom</strong></li>
+  <li><strong>Date de naissance</strong> (format XX/XX/XXXX)</li>
+  <li><strong>Genre</strong></li>
+  <li><strong>Renseignements cliniques et biologiques</strong></li>
+  <li>Pour les nourrissons : terme, poids et identité de la mère</li>
+</ul>
+
+<h4>🔴 Concernant la transfusion</h4>
+<ul>
+  <li><strong>Date et heure souhaitées</strong> de la transfusion</li>
+  <li><strong>Degré d'urgence</strong></li>
+  <li><strong>Qualification du produit</strong> et nombre</li>
+  <li><strong>Débit de transfusion</strong>, volume et débit pour nouveau-né</li>
+</ul>
+
+<h3>7.3 La fiche de délivrance nominative (FDN) — 8 éléments</h3>
+
+<div class="box box-info">
+  <p>La FDN est éditée par l'EFS et accompagne la poche. Elle doit contenir :</p>
+  <ol>
+    <li><strong>Date et heure de délivrance</strong> par l'EFS</li>
+    <li><strong>Identité du patient</strong></li>
+    <li><strong>Établissement et service demandeur</strong></li>
+    <li><strong>Médecin prescripteur</strong> et n° d'ordonnance</li>
+    <li><strong>Contrôle de réception par l'IDE</strong> : nom de l'IDE, date, heure et conformité</li>
+    <li><strong>Données immuno-hématologiques du patient</strong> (récoltées via les documents envoyés avec la PM)</li>
+    <li><strong>Données du PSL</strong> : qualification, groupe, phénotype, nombre, N° du produit</li>
+    <li><strong>Traçabilité</strong> à remplir après la transfusion</li>
+  </ol>
+</div>
+
+<h3>7.4 Le bordereau de transport — 6 éléments</h3>
+
+<div class="box box-info">
+  <ol>
+    <li><strong>Identité du patient receveur</strong></li>
+    <li><strong>Identité du prescripteur</strong></li>
+    <li><strong>Identification du ou des PSL transportés</strong> : type et numéro de poche</li>
+    <li><strong>Lieu de livraison</strong> : établissement + service</li>
+    <li><strong>Identité du transporteur</strong> + date et heure de départ de l'EFS</li>
+    <li><strong>Traçabilité du service receveur</strong> : ID + date + heure de réception</li>
+  </ol>
+</div>
+
+<h3>7.5 Validité du groupage et de la RAI</h3>
+
+<div class="box box-warn">
+  <div class="box-title">Pour qu'un résultat de groupage soit valide :</div>
   <ul>
-    <li>Les documents de groupage sanguin (carte de groupe valide).</li>
-    <li>Les doubles des ordonnances et des prescriptions de PSL.</li>
-    <li>Les résultats des recherches d'anticorps irréguliers (RAI).</li>
-    <li>Les fiches de délivrance archivées.</li>
-    <li>L'information / consentement du patient.</li>
-    <li>Les comptes-rendus d'éventuels incidents transfusionnels.</li>
+    <li><strong>2 déterminations</strong> de groupe et rhésus en bonnes et dues formes</li>
+    <li>= <strong>2 comptes-rendus signés par biologiste</strong> OU <strong>carte de groupe signée</strong></li>
+    <li>à <strong>2 moments différents</strong></li>
+    <li>par <strong>2 préleveurs différents</strong> si possible</li>
   </ul>
+  <p><strong>RAI</strong> : validité de moins de <strong>72 h</strong>.</p>
+</div>
+
+<h2>8. À l'arrivée du coursier — que vérifier ?</h2>
+
+<p>Trois grandes catégories de vérifications dès que le coursier arrive avec le PSL :</p>
+
+<h3>8.1 Concernant le bordereau de transport</h3>
+<ul>
+  <li><strong>Destinataire</strong> (établissement et service) et expéditeur</li>
+  <li><strong>Horaire d'arrivée</strong> par rapport au départ de l'EFS et heure prévue de la transfusion, durée de transport</li>
+</ul>
+
+<h3>8.2 Concernant le produit</h3>
+<ul>
+  <li>Aspect du <strong>colis</strong>, respect des conditions de <strong>température de transport</strong>, respect des conditions d'<strong>hygiène</strong></li>
+  <li><strong>Conformité des produits</strong> : nombre, nature, qualifications, transformations et groupes <strong>conformes à la PM</strong></li>
+  <li><strong>Intégrité du produit</strong> (poche, couleur)</li>
+  <li><strong>Date de péremption</strong></li>
+</ul>
+
+<h3>8.3 Concernant le dossier transfusionnel</h3>
+<ul>
+  <li><strong>Complétude</strong> du dossier</li>
+  <li><strong>Conformité</strong> de chacun des documents</li>
+  <li><strong>Concordance d'identité</strong> entre tous les documents</li>
+</ul>
+
+<h2>9. Les 5 étapes officielles avant de débuter une transfusion</h2>
+
+<div class="box box-danger">
+  <div class="box-title">⚠️ À mémoriser absolument — dans l'ordre</div>
+  <ol>
+    <li><strong>Concordance d'identité</strong></li>
+    <li><strong>Concordance de compatibilité immunologique</strong></li>
+    <li><strong>Concordance des numéros de lot</strong> des PSL</li>
+    <li><strong>Vérification des dates et heures</strong></li>
+    <li><strong>Contrôle ultime au lit du malade (CULM)</strong></li>
+  </ol>
+</div>
+
+<h3>9.1 Concordance d'identité</h3>
+
+<h4>QUOI vérifier ?</h4>
+<ul>
+  <li><strong>NOM de naissance</strong></li>
+  <li><strong>NOM d'usage</strong></li>
+  <li><strong>Prénom(s)</strong></li>
+  <li><strong>Date de naissance</strong> (XX/XX/XXXX)</li>
+  <li><strong>Sexe</strong></li>
+  <li>Bientôt : <strong>INS</strong> (Identité Nationale de Santé)</li>
+</ul>
+
+<h4>OÙ vérifier (8 sources à confronter) ?</h4>
+<div class="box box-info">
+  <ol>
+    <li><strong>Document d'identité valide</strong></li>
+    <li><strong>Étiquette du bracelet patient</strong></li>
+    <li><strong>Ordonnance PSL</strong></li>
+    <li><strong>Fiche de délivrance nominative (FDN)</strong></li>
+    <li><strong>Bordereau de transport</strong></li>
+    <li><strong>Document de groupage / carte de groupe</strong></li>
+    <li><strong>Résultat des RAI</strong></li>
+    <li>Si présente : <strong>étiquette complémentaire de compatibilité du CGR</strong></li>
+  </ol>
+</div>
+
+<h3>9.2 Concordance de compatibilité immunologique</h3>
+
+<h4>QUOI vérifier ?</h4>
+<p><strong>Phénotypes ABO et RH (Rhésus) et RAI</strong></p>
+
+<h4>OÙ vérifier ?</h4>
+<ul>
+  <li><strong>FDN</strong> (feuille de délivrance nominative)</li>
+  <li><strong>Poche PSL</strong></li>
+  <li><strong>Documents de groupe / RAI valide</strong></li>
+</ul>
+
+<div class="box box-key">
+  <div class="box-title">🩸 Focus sur le Rhésus</div>
+  <p>Le système Rhésus est défini par la présence ou l'absence sur la surface des globules rouges, principalement de <strong>5 antigènes : D, C, E, c, e</strong> (le + ou le – indique la présence ou non).</p>
+  <p>Le <strong>K</strong> fait référence au système <strong>Kell</strong>. D'autres systèmes existent : MNS, Duffy, Kidd, Lewis.</p>
+  <p style="margin-top: 12px;"><strong>🚨 LA RÈGLE D'OR :</strong> NE PAS APPORTER AU PATIENT UN ANTIGÈNE QU'IL NE POSSÈDE PAS.</p>
+  <p style="margin-top: 10px;"><em>Exemple : un patient avec un système rhésus D+ C- E- c+ e+ doit recevoir un CGR qui ne contient ni C, ni E (antigènes qu'il ne possède pas).</em></p>
+</div>
+
+<h3>9.3 Concordance des numéros de lot des PSL</h3>
+
+<p><strong>OÙ vérifier ?</strong></p>
+<ul>
+  <li><strong>FDN</strong> (feuille de délivrance nominative)</li>
+  <li><strong>Poche de PSL</strong></li>
+  <li><strong>Bordereau de transport</strong></li>
+</ul>
+
+<h3>9.4 Vérification des dates et heures</h3>
+
+<h4>OÙ vérifier (5 documents) ?</h4>
+<ol>
+  <li>Bordereau de transport</li>
+  <li>Poche de PSL</li>
+  <li>Documents de RAI</li>
+  <li>Feuille de délivrance nominative</li>
+  <li>Ordonnance</li>
+</ol>
+
+<h4>QUOI vérifier sur chaque document ?</h4>
+<div class="box box-warn">
+  <ul>
+    <li><strong>Bordereau de transport</strong> : durée de transport, respect du délai réglementaire des <strong>6 h</strong> depuis sa réception dans le service pour transfuser ; visa heure de départ EFS ; visa heure de réception par l'équipe soignante</li>
+    <li><strong>Poche de PSL</strong> : date de péremption</li>
+    <li><strong>Documents de RAI</strong> : date et heure de prélèvement (<strong>&lt; 72 h</strong>)</li>
+    <li><strong>FDN</strong> : date et heure de délivrance du PSL</li>
+    <li><strong>Ordonnance</strong> : date de prescription, date et heure programmées de la transfusion</li>
+  </ul>
+</div>
+
+<h3>9.5 Contrôle ultime au lit du malade (CULM)</h3>
+
+<div class="box box-danger">
+  <div class="box-title">Les étapes du CULM</div>
+  <ol>
+    <li><strong>Réalisation du carton test</strong></li>
+    <li><strong>Vérification de l'identité complète du patient</strong> : demander d'<strong>épeler</strong> en vérifiant sur les documents, puis <strong>écrire manuellement</strong> l'identité sur la carte</li>
+    <li><strong>Coller l'étiquette du N° de lot</strong></li>
+    <li><strong>Réalisation du test d'agglutination</strong></li>
+    <li><strong>Interprétation des résultats</strong></li>
+    <li><strong>Traçabilité</strong> des résultats sur le carton test ET sur la FDN</li>
+  </ol>
+</div>
+
+<h2>10. Les tests ultimes — exemples avec formulations exactes</h2>
+
+<p>Pour interpréter un test ultime au partiel, il faut suivre la trame officielle ci-dessous (la phrase commence toujours par "<em>J'observe…</em>") :</p>
+
+<div class="box box-info">
+  <div class="box-title">📝 La trame officielle d'interprétation</div>
+  <ol>
+    <li><strong>« J'observe une agglutination / une absence d'agglutination entre le sang du patient et le réactif Anti-X. »</strong></li>
+    <li><strong>« Cela veut dire qu'il y a / qu'il n'y a pas l'antigène X à la surface des hématies du patient. »</strong></li>
+    <li><strong>« Le patient est donc du groupe X. »</strong></li>
+    <li>Idem pour le CGR : <strong>« J'observe… Cela veut dire… Le CGR est donc du groupe… »</strong></li>
+    <li><strong>Conclusion :</strong> « Je peux donc transfuser car… » OU « Je ne peux donc pas transfuser car… »</li>
+  </ol>
+</div>
+
+<div class="box box-danger">
+  <div class="box-title">🚨 LA RÈGLE D'OR DU TEST ULTIME</div>
+  <p style="font-size: 16px; font-weight: 600;">« Toute réaction <strong>positive avec le culot</strong> à transfuser ET <strong>négative avec le patient</strong> INTERDIT la transfusion. »</p>
+</div>
+
+<h3>Exemple 1 — Patient B / CGR A → INCOMPATIBLE</h3>
+
+<div class="box box-danger">
+  <p><strong>Sang du patient :</strong></p>
+  <ul>
+    <li>J'observe une <strong>agglutination</strong> entre le sang du patient et le réactif Anti-B. Cela veut dire qu'il y a <strong>l'antigène B</strong> à la surface des hématies du patient.</li>
+    <li>J'observe une <strong>absence d'agglutination</strong> entre le sang du patient et le réactif Anti-A. Cela veut dire qu'il n'y a <strong>pas d'antigène A</strong> à la surface des hématies du patient.</li>
+    <li>👉 <strong>Le patient est donc du groupe B.</strong></li>
+  </ul>
+  <p><strong>Sang du CGR :</strong></p>
+  <ul>
+    <li>J'observe une <strong>agglutination</strong> entre le sang du CGR et le réactif Anti-A. Cela veut dire qu'il y a <strong>l'antigène A</strong> à la surface des hématies du CGR.</li>
+    <li>J'observe une <strong>absence d'agglutination</strong> entre le sang du CGR et le réactif Anti-B. Cela veut dire qu'il n'y a <strong>pas d'antigène B</strong> à la surface des hématies du CGR.</li>
+    <li>👉 <strong>Le CGR est donc du groupe A.</strong></li>
+  </ul>
+  <p style="margin-top: 12px;"><strong>🛑 Conclusion :</strong> Je ne peux donc pas transfuser car je ne peux pas transfuser d'antigène que le patient n'a pas.</p>
+</div>
+
+<h3>Exemple 2 — Patient A / CGR A → COMPATIBLE (iso-groupe)</h3>
+
+<div class="box box-success">
+  <p><strong>Sang du patient :</strong></p>
+  <ul>
+    <li>J'observe une <strong>agglutination</strong> entre le sang du patient et le réactif Anti-A. Cela veut dire qu'il y a <strong>l'antigène A</strong> à la surface des hématies du patient.</li>
+    <li>J'observe une <strong>absence d'agglutination</strong> entre le sang du patient et le réactif Anti-B. Cela veut dire qu'il n'y a <strong>pas d'antigène B</strong> à la surface des hématies du patient.</li>
+    <li>👉 <strong>Le patient est donc du groupe A.</strong></li>
+  </ul>
+  <p><strong>Sang du CGR :</strong></p>
+  <ul>
+    <li>J'observe une <strong>agglutination</strong> entre le sang du CGR et le réactif Anti-A → antigène A présent.</li>
+    <li>J'observe une <strong>absence d'agglutination</strong> entre le sang du CGR et le réactif Anti-B → pas d'antigène B.</li>
+    <li>👉 <strong>Le CGR est donc du groupe A.</strong></li>
+  </ul>
+  <p style="margin-top: 12px;"><strong>✅ Conclusion :</strong> Je peux donc transfuser car je ne transfuse pas d'antigène que le patient n'a pas. Il s'agit d'une <strong>transfusion iso-groupe</strong>.</p>
+</div>
+
+<h3>Exemple 3 — Patient AB / CGR O → COMPATIBLE (donneur universel)</h3>
+
+<div class="box box-success">
+  <p><strong>Sang du patient :</strong></p>
+  <ul>
+    <li>J'observe une <strong>agglutination</strong> entre le sang du patient et les réactifs Anti-A <strong>et</strong> Anti-B. Cela veut dire qu'il y a <strong>les antigènes A et B</strong> à la surface des hématies du patient.</li>
+    <li>👉 <strong>Le patient est donc du groupe AB.</strong></li>
+  </ul>
+  <p><strong>Sang du CGR :</strong></p>
+  <ul>
+    <li>J'observe une <strong>absence d'agglutination</strong> entre le sang du CGR et les réactifs Anti-A et Anti-B. Cela veut dire qu'il n'y a <strong>pas d'antigène A et B</strong> à la surface des hématies du CGR.</li>
+    <li>👉 <strong>Le CGR est donc du groupe O.</strong></li>
+  </ul>
+  <p style="margin-top: 12px;"><strong>✅ Conclusion :</strong> Je peux donc transfuser car le <strong>groupe O est donneur universel</strong> et le <strong>groupe AB est receveur universel</strong>.</p>
+</div>
+
+<h3>Exemple 4 — Patient O / CGR AB → INCOMPATIBLE</h3>
+
+<div class="box box-danger">
+  <p><strong>Sang du patient :</strong></p>
+  <ul>
+    <li>J'observe une <strong>absence d'agglutination</strong> entre le sang du patient et les réactifs Anti-A et Anti-B. Cela veut dire qu'il n'y a <strong>pas d'antigènes A et B</strong> à la surface des hématies du patient.</li>
+    <li>👉 <strong>Le patient est donc du groupe O.</strong></li>
+  </ul>
+  <p><strong>Sang du CGR :</strong></p>
+  <ul>
+    <li>J'observe une <strong>agglutination</strong> entre le sang du CGR et les réactifs Anti-A et Anti-B → antigènes A et B présents.</li>
+    <li>👉 <strong>Le CGR est donc du groupe AB.</strong></li>
+  </ul>
+  <p style="margin-top: 12px;"><strong>🛑 Conclusion :</strong> Je ne peux donc pas transfuser. <strong>Toute réaction positive du culot à transfuser et négative avec le patient interdit la transfusion.</strong></p>
+</div>
+
+<h2>11. 🎯 Entraîneur interactif — Test ultime</h2>
+
+<p>Mets-toi en situation : un cas s'affiche, à toi de l'interpréter pas à pas et de prendre la décision. Compare ensuite ta réponse à la <strong>formulation officielle</strong> attendue au partiel.</p>
+
+<div class="trainer" id="trainer">
+  <div class="trainer-header">
+    <div class="trainer-counter" id="trainerCounter">Cas 1 / 8</div>
+    <div>
+      <button class="trainer-btn trainer-btn-sec" onclick="prevCase()">← Précédent</button>
+      <button class="trainer-btn" onclick="nextCase()">Cas suivant →</button>
+    </div>
+  </div>
+
+  <div id="trainerCard"></div>
+  <div id="trainerSteps"></div>
+  <div id="trainerFormulation"></div>
 </div>
 
 </section>
@@ -1170,8 +1786,8 @@
 <section id="suppl" class="section">
 
 <div class="quiz-intro">
-  <h2 style="margin-top: 0; border: none;">Quiz bonus — 34 questions</h2>
-  <p>Pour aller plus loin et consolider tes connaissances (avec questions du partiel 4.4 évaluation écrite).</p>
+  <h2 style="margin-top: 0; border: none;">Quiz bonus — 45 questions</h2>
+  <p>Pour aller plus loin et consolider tes connaissances (toutes les questions du partiel 4.4 + questions du cours).</p>
   <div class="quiz-stats" id="stats-suppl">
     <div class="stat"><div class="stat-num" id="answered-suppl">0</div><div class="stat-label">Répondues</div></div>
     <div class="stat"><div class="stat-num" id="correct-suppl">0</div><div class="stat-label">Correctes</div></div>
@@ -1223,6 +1839,12 @@
   <li><span class="tag tag-secu">Matériel</span><div>Transfuseur avec <strong>filtre anti-agrégats</strong>, chambre compte-gouttes remplie aux <strong>2/3</strong>.</div></li>
   <li><span class="tag tag-exam">RAI</span><div><strong>RAI = Recherche d'Agglutinines Irrégulières</strong>. Circonstances favorisantes : grossesse, transfusion antérieure, greffe.</div></li>
   <li><span class="tag tag-rh">Phénotypé</span><div>Pour éviter l'allo-immunisation Rh-Kell : <strong>CGR phénotypé</strong> (pas comptabilisé).</div></li>
+  <li><span class="tag tag-rh">Rhésus</span><div>5 antigènes du système Rhésus : <strong>D, C, E, c, e</strong>. Le K = système Kell.</div></li>
+  <li><span class="tag tag-rh">Règle d'or</span><div>NE PAS apporter au patient un antigène qu'il ne possède PAS.</div></li>
+  <li><span class="tag tag-secu">5 étapes</span><div>Les 5 étapes officielles : Concordance identité → compatibilité immuno → numéros de lot → dates/heures → CULM.</div></li>
+  <li><span class="tag tag-doss">6 documents</span><div>Dossier transfusionnel : Prescription + FDN + Groupage + RAI + Bordereau de transport + Documents d'identité.</div></li>
+  <li><span class="tag tag-doss">8 sources</span><div>Concordance d'identité à vérifier sur : doc identité, bracelet, ordonnance PSL, FDN, bordereau, carte groupe, RAI, étiquette compatibilité CGR.</div></li>
+  <li><span class="tag tag-acc">Règle CULM</span><div><strong>« Toute réaction positive du culot ET négative avec le patient INTERDIT la transfusion »</strong>.</div></li>
 </ul>
 
 <div class="box box-success" style="margin-top: 32px; text-align: center;">
@@ -1322,7 +1944,17 @@ const questionsSuppl = [
   {n:71, q:"Les 4 signes cliniques traduisant un incident transfusionnel sont :", o:["Frissons, fièvre","Nausées, vomissements","Tachycardie","Angoisse","Constipation","Somnolence isolée"], a:[0,1,2,3], e:"Signes typiques d'incident transfusionnel : frissons/fièvre, nausées/vomissements, tachycardie, angoisse. Aussi : douleurs lombaires, hypotension, dyspnée, urticaire, urines porto."},
   {n:72, q:"Face à un incident transfusionnel, les 4 premières actions IDE sont :", o:["Arrêter la transfusion","Maintenir la voie d'abord avec sérum physiologique ou NaCl 0,9 %","Appeler le médecin","Reprendre les constantes et vérifier les urines","Retirer la VVP","Renvoyer immédiatement la poche"], a:[0,1,2,3], e:"Ordre des actions : 1) Arrêter, 2) Maintenir voie avec NaCl 0,9 %, 3) Appeler le médecin, 4) Reprendre constantes + vérifier urines. NE PAS retirer la VVP, NE PAS renvoyer la poche immédiatement."},
   {n:73, q:"Le contrôle ultime au lit du malade (CULM) se fait :", o:["Sur le chariot dans le couloir","Au lit du malade","Pour chaque poche à transfuser","Dans la salle de soins, sur le plan de travail","Uniquement pour la première poche","À la réception des produits dans le service"], a:[1,2], e:"CULM : AU LIT DU MALADE, POUR CHAQUE poche à transfuser. Pas dans le couloir, pas en salle de soins, pas uniquement pour la 1ère poche, pas à la réception."},
-  {n:74, q:"Le bénéfice obtenu après la transfusion d'un concentré globulaire peut être apprécié par :", o:["Groupage sanguin","Temps de céphaline activé","Taux d'hémoglobine","Numération formule sanguine (NFS)","Hémoglobine capillaire (Hémocue)","Taux de prothrombine","Plaquettes"], a:[2,3,4], e:"Pour évaluer le bénéfice d'une transfusion de CGR : taux d'hémoglobine, NFS, Hémocue (mesure rapide de l'Hb). Pas le TP/TCA (hémostase), pas les plaquettes, pas le groupage."}
+  {n:74, q:"Le bénéfice obtenu après la transfusion d'un concentré globulaire peut être apprécié par :", o:["Groupage sanguin","Temps de céphaline activé","Taux d'hémoglobine","Numération formule sanguine (NFS)","Hémoglobine capillaire (Hémocue)","Taux de prothrombine","Plaquettes"], a:[2,3,4], e:"Pour évaluer le bénéfice d'une transfusion de CGR : taux d'hémoglobine, NFS, Hémocue (mesure rapide de l'Hb). Pas le TP/TCA (hémostase), pas les plaquettes, pas le groupage."},
+  {n:75, q:"Un patient de groupe O Rhésus Positif phénotypé C+, E-, c+, e+, K- doit être transfusé en CGR phénotypé. On peut lui transfuser un culot :", o:["O négatif C-, E-, c+, e+, K-","A positif C+, E-, c-, e+, K-","O positif C+, E-, c-, e+, K+","O positif C+, E-, c-, e+, K-"], a:[0,3], e:"Patient O Rh+ → ne peut recevoir que du O (Rh+ ou Rh-). On choisit un CGR sans antigène que le patient n'a PAS : E- (donc E- OK), K- (donc K+ INTERDIT). Présence ou absence de C/c/e doit être compatible. Les options A+ (mauvais groupe ABO) et K+ (K interdit) sont éliminées."},
+  {n:76, q:"Les personnes ayant un groupe sanguin A peuvent recevoir un :", o:["Culot globulaire du groupe A","Culot globulaire du groupe B","Culot globulaire du groupe AB","Culot globulaire du groupe O","Concentré plaquettaire du groupe A","Concentré plaquettaire du groupe B","Concentré plaquettaire du groupe AB","Concentré plaquettaire du groupe O","Plasma frais du groupe A","Plasma frais du groupe B","Plasma frais du groupe AB","Plasma frais du groupe O"], a:[0,3,4,7,8,10], e:"Groupe A reçoit : CGR A ou O. Plaquettes A ou O (mêmes règles que CGR car contiennent des hématies résiduelles). Plasma A ou AB (règles inversées : on évite d'apporter des anticorps anti-A qui détruiraient les hématies du receveur)."},
+  {n:77, q:"Les personnes ayant un groupe sanguin B peuvent recevoir un :", o:["Culot globulaire du groupe A","Culot globulaire du groupe B","Culot globulaire du groupe AB","Culot globulaire du groupe O","Concentré plaquettaire du groupe A","Concentré plaquettaire du groupe B","Concentré plaquettaire du groupe AB","Concentré plaquettaire du groupe O","Plasma frais du groupe A","Plasma frais du groupe B","Plasma frais du groupe AB","Plasma frais du groupe O"], a:[1,3,5,7,9,10], e:"Groupe B reçoit : CGR B ou O. Plaquettes B ou O (mêmes règles que CGR). Plasma B ou AB (règles inversées : on évite d'apporter des anticorps anti-B)."},
+  {n:78, q:"Le dossier transfusionnel doit contenir 6 documents. Lesquels ?", o:["La prescription médicale","La fiche de délivrance nominative (FDN)","Le groupage du patient","Les RAI","Le bordereau de transport","Les documents d'identité","Le compte-rendu d'hospitalisation","Les ordonnances précédentes"], a:[0,1,2,3,4,5], e:"Les 6 documents du dossier transfusionnel : prescription médicale, FDN, groupage du patient, RAI, bordereau de transport, documents d'identité."},
+  {n:79, q:"Les 5 étapes officielles à respecter AVANT de débuter une transfusion sont :", o:["Concordance d'identité","Concordance de compatibilité immunologique","Concordance des numéros de lot des PSL","Vérification des dates et heures","Contrôle ultime au lit du malade (CULM)","Mesure des constantes du patient","Vérification de la voie veineuse"], a:[0,1,2,3,4], e:"Les 5 étapes officielles : 1) Concordance d'identité, 2) Concordance de compatibilité immunologique (ABO, RH, RAI), 3) Concordance des numéros de lot, 4) Vérification dates et heures, 5) CULM."},
+  {n:80, q:"La concordance d'identité avant transfusion se vérifie sur 8 sources. Lesquelles ?", o:["Document d'identité valide","Étiquette du bracelet patient","Ordonnance PSL","Fiche de délivrance nominative (FDN)","Bordereau de transport","Document de groupage / carte de groupe","Résultat des RAI","Étiquette complémentaire de compatibilité du CGR (si présente)","Carnet de santé du patient"], a:[0,1,2,3,4,5,6,7], e:"Les 8 sources de vérification d'identité : document d'identité, bracelet patient, ordonnance PSL, FDN, bordereau de transport, carte de groupe, RAI, étiquette de compatibilité du CGR si présente."},
+  {n:81, q:"Le système Rhésus est principalement défini par combien d'antigènes ?", o:["3 antigènes (D, C, E)","5 antigènes (D, C, E, c, e)","2 antigènes (D, K)","7 antigènes (D, C, E, c, e, K, Duffy)"], a:[1], e:"Le système Rhésus est défini par 5 antigènes principaux : D, C, E, c, e. Le K (Kell) fait référence à un autre système. D'autres systèmes existent : MNS, Duffy, Kidd, Lewis."},
+  {n:82, q:"Quelle est LA règle d'or à respecter pour la transfusion d'un CGR phénotypé ?", o:["Apporter au patient les antigènes manquants","NE PAS apporter au patient un antigène qu'il ne possède pas","Toujours transfuser iso-groupe","Vérifier uniquement l'ABO"], a:[1], e:"LA règle d'or : NE PAS APPORTER AU PATIENT UN ANTIGÈNE QU'IL NE POSSÈDE PAS. Exemple : un patient D+ C- E- c+ e+ doit recevoir un CGR sans C ni E."},
+  {n:83, q:"Lors du contrôle ultime au lit du malade (CULM), j'observe : patient anti-A+ et anti-B+, CGR anti-A négatif et anti-B négatif. Que dois-je dire ?", o:["Le patient est de groupe O, le CGR est de groupe AB → je ne transfuse pas","Le patient est de groupe AB, le CGR est de groupe O → je peux transfuser car O est donneur universel et AB receveur universel","Les deux sont incompatibles","Le test est invalide, à refaire"], a:[1], e:"Patient anti-A+ et anti-B+ → groupe AB (receveur universel). CGR pas d'agglutination → groupe O (donneur universel). Compatible : transfusion iso-groupe."},
+  {n:84, q:"Lors d'un CULM, j'observe : patient pas d'agglutination, CGR agglutination avec anti-A et anti-B. Que conclure ?", o:["Le patient est de groupe O, le CGR est de groupe AB → INCOMPATIBLE, je ne transfuse pas","Patient AB, CGR O → je transfuse","Les deux sont O → je transfuse","Test à refaire"], a:[0], e:"Patient pas d'agglutination → groupe O. CGR agglutine avec anti-A et anti-B → groupe AB. RÈGLE D'OR : toute réaction positive du culot et négative avec le patient INTERDIT la transfusion. Je ne transfuse pas."}
 ];
 
 // ============ STATE ============
@@ -1662,6 +2294,222 @@ function showToast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
 }
 
+// ============ TRAINER TEST ULTIME ============
+const trainerCases = [
+  {
+    // Cas 1 : Patient B / CGR A → INCOMPATIBLE
+    patient: { antiA: false, antiB: true },
+    cgr: { antiA: true, antiB: false },
+    patientGroup: 'B', cgrGroup: 'A',
+    canTransfuse: false,
+    reason: "INCOMPATIBLE"
+  },
+  {
+    // Cas 2 : Patient A / CGR A → COMPATIBLE iso-groupe
+    patient: { antiA: true, antiB: false },
+    cgr: { antiA: true, antiB: false },
+    patientGroup: 'A', cgrGroup: 'A',
+    canTransfuse: true,
+    reason: "ISO-GROUPE"
+  },
+  {
+    // Cas 3 : Patient AB / CGR O → COMPATIBLE
+    patient: { antiA: true, antiB: true },
+    cgr: { antiA: false, antiB: false },
+    patientGroup: 'AB', cgrGroup: 'O',
+    canTransfuse: true,
+    reason: "O donneur universel / AB receveur universel"
+  },
+  {
+    // Cas 4 : Patient O / CGR AB → INCOMPATIBLE
+    patient: { antiA: false, antiB: false },
+    cgr: { antiA: true, antiB: true },
+    patientGroup: 'O', cgrGroup: 'AB',
+    canTransfuse: false,
+    reason: "INCOMPATIBLE"
+  },
+  {
+    // Cas 5 : Patient A / CGR O → COMPATIBLE
+    patient: { antiA: true, antiB: false },
+    cgr: { antiA: false, antiB: false },
+    patientGroup: 'A', cgrGroup: 'O',
+    canTransfuse: true,
+    reason: "O donneur universel"
+  },
+  {
+    // Cas 6 : Patient B / CGR AB → INCOMPATIBLE
+    patient: { antiA: false, antiB: true },
+    cgr: { antiA: true, antiB: true },
+    patientGroup: 'B', cgrGroup: 'AB',
+    canTransfuse: false,
+    reason: "INCOMPATIBLE"
+  },
+  {
+    // Cas 7 : Patient AB / CGR B → COMPATIBLE
+    patient: { antiA: true, antiB: true },
+    cgr: { antiA: false, antiB: true },
+    patientGroup: 'AB', cgrGroup: 'B',
+    canTransfuse: true,
+    reason: "AB receveur universel"
+  },
+  {
+    // Cas 8 : Patient O / CGR O → COMPATIBLE iso-groupe
+    patient: { antiA: false, antiB: false },
+    cgr: { antiA: false, antiB: false },
+    patientGroup: 'O', cgrGroup: 'O',
+    canTransfuse: true,
+    reason: "ISO-GROUPE"
+  }
+];
+
+let currentCaseIdx = 0;
+let currentAnswers = { patientGroup: null, cgrGroup: null, decision: null };
+
+function buildTestCard(c) {
+  const cell = (agglu) => `<div class="test-cell ${agglu ? 'agglu' : 'clear'}"></div>`;
+  return `
+    <div class="test-card">
+      <div class="test-card-title">Carton-test du contrôle ultime</div>
+      <div class="test-header">
+        <div></div>
+        <div>Patient</div>
+        <div>CGR</div>
+      </div>
+      <div class="test-row">
+        <div class="test-row-label">Anti-A</div>
+        ${cell(c.patient.antiA)}
+        ${cell(c.cgr.antiA)}
+      </div>
+      <div class="test-row">
+        <div class="test-row-label">Anti-B</div>
+        ${cell(c.patient.antiB)}
+        ${cell(c.cgr.antiB)}
+      </div>
+      <div style="text-align: center; margin-top: 14px; font-size: 12px; color: var(--text-soft);">
+        ● = agglutination · ○ = pas d'agglutination
+      </div>
+    </div>
+  `;
+}
+
+function buildSteps() {
+  return `
+    <div class="trainer-step">
+      <div class="trainer-step-title">1️⃣ Quel est le groupe du patient ?</div>
+      <button class="trainer-choice" onclick="answerStep('patientGroup', 'A')">A</button>
+      <button class="trainer-choice" onclick="answerStep('patientGroup', 'B')">B</button>
+      <button class="trainer-choice" onclick="answerStep('patientGroup', 'AB')">AB</button>
+      <button class="trainer-choice" onclick="answerStep('patientGroup', 'O')">O</button>
+    </div>
+    <div class="trainer-step" id="step2" style="display:none;">
+      <div class="trainer-step-title">2️⃣ Quel est le groupe du CGR ?</div>
+      <button class="trainer-choice" onclick="answerStep('cgrGroup', 'A')">A</button>
+      <button class="trainer-choice" onclick="answerStep('cgrGroup', 'B')">B</button>
+      <button class="trainer-choice" onclick="answerStep('cgrGroup', 'AB')">AB</button>
+      <button class="trainer-choice" onclick="answerStep('cgrGroup', 'O')">O</button>
+    </div>
+    <div class="trainer-step" id="step3" style="display:none;">
+      <div class="trainer-step-title">3️⃣ Décision : peut-on transfuser ?</div>
+      <button class="trainer-choice" onclick="answerStep('decision', 'yes')">✅ Oui, je peux transfuser</button>
+      <button class="trainer-choice" onclick="answerStep('decision', 'no')">🛑 Non, je ne peux pas transfuser</button>
+    </div>
+  `;
+}
+
+function answerStep(key, value) {
+  const c = trainerCases[currentCaseIdx];
+  currentAnswers[key] = value;
+
+  // Marquer la réponse correcte/incorrecte
+  let correctValue;
+  let stepId;
+  if (key === 'patientGroup') { correctValue = c.patientGroup; stepId = 1; }
+  else if (key === 'cgrGroup') { correctValue = c.cgrGroup; stepId = 2; }
+  else { correctValue = c.canTransfuse ? 'yes' : 'no'; stepId = 3; }
+
+  // Style des boutons
+  const stepDiv = document.querySelectorAll('.trainer-step')[stepId-1];
+  stepDiv.querySelectorAll('.trainer-choice').forEach(btn => {
+    btn.disabled = true;
+    const btnVal = btn.getAttribute('onclick').match(/'([^']+)'\)$/)[1];
+    if (btnVal === correctValue) btn.classList.add('correct');
+    else if (btnVal === value && value !== correctValue) btn.classList.add('wrong');
+  });
+
+  // Afficher étape suivante
+  if (stepId === 1) {
+    document.getElementById('step2').style.display = 'block';
+  } else if (stepId === 2) {
+    document.getElementById('step3').style.display = 'block';
+  } else if (stepId === 3) {
+    showFormulation();
+  }
+}
+
+function showFormulation() {
+  const c = trainerCases[currentCaseIdx];
+
+  const phr = (subject, anti, agglu, antigen) => {
+    if (agglu) {
+      return `J'observe une <strong>agglutination</strong> entre le sang du ${subject} et le réactif <strong>Anti-${anti}</strong>. Cela veut dire qu'il y a <strong>l'antigène ${antigen}</strong> à la surface des hématies du ${subject}.`;
+    } else {
+      return `J'observe une <strong>absence d'agglutination</strong> entre le sang du ${subject} et le réactif <strong>Anti-${anti}</strong>. Cela veut dire qu'il n'y a <strong>pas d'antigène ${antigen}</strong> à la surface des hématies du ${subject}.`;
+    }
+  };
+
+  let conclusion = '';
+  if (c.canTransfuse) {
+    if (c.reason === "ISO-GROUPE") {
+      conclusion = `Je peux donc transfuser car je ne transfuse pas d'antigène que le patient n'a pas. Il s'agit d'une <strong>transfusion iso-groupe</strong>.`;
+    } else if (c.reason.includes("universel")) {
+      conclusion = `Je peux donc transfuser car ${c.reason.includes("O donneur") ? "<strong>le groupe O est donneur universel</strong>" : ""}${c.reason.includes("AB receveur") ? "<strong>le groupe AB est receveur universel</strong>" : ""}.`;
+    } else {
+      conclusion = `Je peux donc transfuser.`;
+    }
+  } else {
+    conclusion = `<strong>🛑 Je ne peux donc pas transfuser.</strong> Toute réaction <strong>positive avec le culot</strong> et <strong>négative avec le patient</strong> interdit la transfusion.`;
+  }
+
+  const verdictClass = c.canTransfuse ? 'verdict-go' : 'verdict-stop';
+  const verdictText = c.canTransfuse ? `✅ TRANSFUSION POSSIBLE — Patient ${c.patientGroup} / CGR ${c.cgrGroup}` : `🛑 TRANSFUSION INTERDITE — Patient ${c.patientGroup} / CGR ${c.cgrGroup}`;
+
+  document.getElementById('trainerFormulation').innerHTML = `
+    <div class="verdict ${verdictClass}">${verdictText}</div>
+    <div class="formulation">
+      <div class="formulation-title">📝 Formulation officielle attendue au partiel</div>
+      <p><strong>Sang du patient :</strong></p>
+      <p>• ${phr('patient', 'A', c.patient.antiA, 'A')}</p>
+      <p>• ${phr('patient', 'B', c.patient.antiB, 'B')}</p>
+      <p>👉 <strong>Le patient est donc du groupe ${c.patientGroup}.</strong></p>
+      <p style="margin-top: 10px;"><strong>Sang du CGR :</strong></p>
+      <p>• ${phr('CGR', 'A', c.cgr.antiA, 'A')}</p>
+      <p>• ${phr('CGR', 'B', c.cgr.antiB, 'B')}</p>
+      <p>👉 <strong>Le CGR est donc du groupe ${c.cgrGroup}.</strong></p>
+      <p style="margin-top: 10px;"><strong>Conclusion :</strong></p>
+      <p>${conclusion}</p>
+    </div>
+  `;
+}
+
+function renderTrainer() {
+  const c = trainerCases[currentCaseIdx];
+  currentAnswers = { patientGroup: null, cgrGroup: null, decision: null };
+  document.getElementById('trainerCounter').textContent = `Cas ${currentCaseIdx + 1} / ${trainerCases.length}`;
+  document.getElementById('trainerCard').innerHTML = buildTestCard(c);
+  document.getElementById('trainerSteps').innerHTML = buildSteps();
+  document.getElementById('trainerFormulation').innerHTML = '';
+}
+
+function nextCase() {
+  currentCaseIdx = (currentCaseIdx + 1) % trainerCases.length;
+  renderTrainer();
+}
+
+function prevCase() {
+  currentCaseIdx = (currentCaseIdx - 1 + trainerCases.length) % trainerCases.length;
+  renderTrainer();
+}
+
 // ============ INIT ============
 function init() {
   loadState();
@@ -1688,6 +2536,9 @@ function init() {
 
   updateStats('partiel');
   updateStats('suppl');
+
+  // Render trainer test ultime
+  renderTrainer();
 }
 
 init();
